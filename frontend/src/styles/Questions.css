@@ -3,3 +3,58 @@
 
 
 /* Question summary */
+
+.question-summary {
+  background-color:white;
+  width: 80%;
+  margin: 1em auto;
+  padding: 1.5em;
+  border-radius: 4px;
+  -webkit-box-shadow: 3px 3px 3px -3px rgba(194,194,194,1);
+-moz-box-shadow: 3px 3px 3px -3px rgba(194,194,194,1);
+box-shadow: 3px 3px 3px -3px rgba(194,194,194,1);
+}
+
+.summary-header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 8em;
+  margin: auto 5%;
+}
+
+.question-summary a {
+  text-decoration: none;
+  color: black;
+}
+
+.like-p {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.3em;
+  color: peru;
+  align-self: flex-end;
+}
+
+.question-summary:hover {
+  -webkit-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+-moz-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+
+}
+
+.summary-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-body button {
+  width: 10em;
+  align-self: flex-end;
+  margin-right: 5%;
+}
+
+
+.summary-text {
+  margin: auto 5%;
+}

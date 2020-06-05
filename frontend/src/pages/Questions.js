@@ -3,24 +3,24 @@ import { QuestionSummary } from '../components/QuestionSummary'
 
   export const QuestionsPage = () => {
 
-    const [questions, setQuestions] = useState([])
+    const [data, setData] = useState([])
 
     useEffect(() => {
       fetch('https://mongodb-questions.herokuapp.com/questions')
       .then(res => 
-        res.json
+        res.json()
       )
       .then((data) => {
-        setQuestions(data)
+        setData(data)
       }, [])
 
     })
     return (
       <section className=''>
-        {questions.map((question) => {
+        {data.map((item) => {
           return (
             <QuestionSummary 
-              key={question._id} id={question._id} likes={question.likes} question={question.question} time={question.createdAt}
+              key={item._id} id={item._id} likes={item.likes} question={item.question} time={item.createdAt}
             />
           )
         })}

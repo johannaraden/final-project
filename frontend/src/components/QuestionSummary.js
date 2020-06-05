@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom' 
 import { useDispatch } from 'react-redux'
 import moment from 'moment'
+import { Button } from '../lib/button'
+import '../styles/Questions.css'
+
 
 
 export const QuestionSummary = (props) => {
@@ -18,14 +21,17 @@ export const QuestionSummary = (props) => {
   return (
     <div className='question-summary'>
       <Link to={`/question/${id}`}>
-        <h4 key={props.id}>{props.question}</h4>
-        <span className={likes > 10 ? "lots" : likes > 5 ? "few" : "none" } onClick={likeClick}>
-        {/* Conditional operators for setting different classes depending on number of likes */}
-        <img className="heart" alt="heart-icon" src="https://img.icons8.com/cotton/64/000000/like--v1.png"/>
-        </span>
-        <p className="like-p">x {likes}</p>
-        <p className="time">{moment(time).fromNow()}</p>
-        {/* Calculation with moment for setting the time that has passed since publication */}
+        <div className='summary-header'>
+          <h1 className='summary-item'>Headline</h1>
+          <p className='summary-item time'>{moment(time).fromNow()}</p>
+          <p className='summary-item like-p'>{likes}<br/> likes</p>
+        </div>
+        <hr></hr>
+        <div className='summary-body'>
+          <p className='summary-text' key={props.id}>{props.question}</p>
+          {/* Calculation with moment for setting the time that has passed since publication */}
+          <Button title='read more ➡'/>
+        </div>
       </Link>
     </div>
   )

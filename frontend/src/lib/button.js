@@ -6,10 +6,8 @@ const ButtonInput = styled.button`
   margin-top: 0;
   color: #4f4f4f;
   text-align: center;
-  font-size: 1.2em;
-  font-size: 0.825rem;
+  padding: 1em 2em;
   text-align: center;
-  height: 2.5em;
   margin-top: 1em;
   border-radius: 300px;
   &:hover {
@@ -19,7 +17,7 @@ const ButtonInput = styled.button`
 `
 export const InputButton = styled.input`
   margin-top: 0;
-  padding: 0.5em 1.5em;
+  padding: 1em 2em;
   color: #4f4f4f;
   text-align: center;
   font-size: 1.2em;
