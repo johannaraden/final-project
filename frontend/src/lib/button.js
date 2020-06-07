@@ -15,7 +15,7 @@ const ButtonInput = styled.button`
     color: white;
   }
 `
-export const InputButton = styled.input`
+export const FilterButton = styled.button`
   margin-top: 0;
   padding: 1em 2em;
   color: #4f4f4f;

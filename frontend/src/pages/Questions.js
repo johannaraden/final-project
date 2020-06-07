@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { QuestionSummary } from '../components/QuestionSummary'
+import { QuestionMenu } from '../components/QuestionMenu'
 
   export const QuestionsPage = () => {
 
@@ -17,6 +18,7 @@ import { QuestionSummary } from '../components/QuestionSummary'
     })
     return (
       <section className=''>
+        <QuestionMenu />
         {data.map((item) => {
           return (
             <QuestionSummary 
