@@ -2,33 +2,42 @@ import React from 'react'
 import styled from 'styled-components/macro'
 
 
-const ButtonInput = styled.button`
+export const ButtonInput = styled.button`
   margin-top: 0;
   color: #4f4f4f;
   text-align: center;
-  padding: 1em 2em;
+  padding: .2em 0;
   text-align: center;
   margin-top: 1em;
-  border-radius: 300px;
   &:hover {
-    background: palevioletred;
+    background: palegoldenrod;
     color: white;
+    border: 2px solid white;
+    cursor: pointer;
   }
 `
 export const FilterButton = styled.button`
-  margin-top: 0;
-  padding: 1em 2em;
   color: #4f4f4f;
+  padding: 1em 2em;
   text-align: center;
-  font-size: 1.2em;
-  font-size: 0.825rem;
-  text-align: center;
-  height: 2.5em;
-  margin-top: 1em;
-  border-radius: 300px;
+  font-size: 1em;
+  border: none;
   &:hover {
-    background: palevioletred;
+    background: palegoldenrod;
     color: white;
+    cursor: pointer;
+  } 
+`
+export const AskButton = styled.button`
+  background-color: #85D8CE;
+  padding: 1em 2em;
+  text-align: center;
+  font-size: 1em;
+  border: none;
+  &:hover {
+    background: palegoldenrod;
+    color: white;
+    cursor: pointer;
   } 
 `
 
@@ -43,11 +52,3 @@ export const Button = ({ title }) => {
     </ButtonInput>
   )
 }
-
-// export const TestButton = ({ title }) => {
-//   return (
-//     <InputButton>
-//       {title}
-//     </InputButton>
-//   )
-// }

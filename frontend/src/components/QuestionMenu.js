@@ -1,21 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom' 
 import { useDispatch } from 'react-redux'
-import { FilterButton } from '../lib/button'
+import { FilterButton, AskButton } from '../lib/button'
 import '../styles/Questions.css'
 import { SearchField } from 'lib/search-field'
+import { AddQuestion } from './AddQuestion'
+
 
 export const QuestionMenu = () => {
 
+  const [showQuestionForm, setShowQuestionForm] = useState(false)
+// const dispatch = useDispatch()
+
+  const newQuestion = () => {
+    setShowQuestionForm(true)
+    if(showQuestionForm) {
+      setShowQuestionForm(false)
+    }
+  }
   return (
-    <div class="questions-menu">
-      <div className='questions-options'>
-        <FilterButton>Most popular</FilterButton>
-        <FilterButton>Unanswered</FilterButton>
-        <FilterButton></FilterButton>
-        <SearchField />
+    <>
+    <div className='questions-menu'>
+      <FilterButton>Most popular</FilterButton>
+      <FilterButton>Unanswered</FilterButton>
+      <form className='questions-options'>
+        {/* add onChange */}
+        <select name='question-sorting' defaultValue=' ' className='question-sorting'>
+          <option value=' '>Options</option>
+          <option value='newest-first'>Newest first</option>
+          <option value='oldest-first'>Oldest first</option>
+          <option value='most-answers'>Most answers</option>
+          <option value='least-answers'>Least answers</option>
+        </select>
+      </form> 
+      <SearchField />
+      <AskButton type="button" onClick={newQuestion}>
+          Ask!
+      </AskButton>   
       </div>
-    </div>
-    // Conditional rendering of profile picture&log out button
+    <section>
+      {showQuestionForm && (
+        <AddQuestion>
+        </AddQuestion>
+      )}
+    </section>
+    </>
   )
 }

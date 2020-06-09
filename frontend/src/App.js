@@ -8,6 +8,7 @@ import QuestionsPage from './pages/Questions'
 import { Provider } from "react-redux"
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { user } from './reducers/user'
+import { question } from './reducers/question'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 const saveToLocalStorage = (state) => {
@@ -32,7 +33,10 @@ const loadFromLocalStorage = () => {
 
 const persistedState = loadFromLocalStorage()
 
-const reducer = combineReducers({ user: user.reducer })
+const reducer = combineReducers({ 
+  user: user.reducer,
+  question: question.reducer
+})
 
 const store = configureStore({ reducer, persistedState })
 

@@ -1,7 +1,6 @@
 /* Question page */
 
 
-
 /* Question summary */
 
 .question-summary, .questions-menu {
@@ -14,6 +13,7 @@
   -moz-box-shadow: 3px 3px 3px -3px rgba(194,194,194,1);
   box-shadow: 3px 3px 3px -3px rgba(194,194,194,1);
 }
+
 
 .summary-header {
   display: flex;
@@ -32,15 +32,14 @@
   text-align: center;
   font-weight: bolder;
   font-size: 1.3em;
-  color: peru;
+  color: palevioletred;
   align-self: flex-end;
 }
 
 .question-summary:hover {
   -webkit-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
--moz-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
-
+  -moz-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+  box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
 }
 
 .summary-body {
@@ -57,4 +56,20 @@ box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
 
 .summary-text {
   margin: auto 5%;
+}
+
+
+/* Question menu */
+
+.questions-menu {
+  display: flex;
+  justify-content: center;
+  background-color: #858585ed;
+}
+
+.question-sorting {
+  padding: 1em 2em;
+  font-size: 1em;
+  color: #4f4f4f;
+  border: none;
 }

@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom' 
 import { useDispatch } from 'react-redux'
 import moment from 'moment'
-import { Button } from '../lib/button'
+import { ButtonInput } from '../lib/button'
 import '../styles/Questions.css'
 
 
 
 export const QuestionSummary = (props) => {
-  const {id, likes, time, question} = props
+  const {id, likes, time, question, title} = props
   const dispatch = useDispatch()
 
   const likeClick = () => {
@@ -22,7 +22,7 @@ export const QuestionSummary = (props) => {
     <div className='question-summary'>
       <Link to={`/question/${id}`}>
         <div className='summary-header'>
-          <h1 className='summary-item'>Headline</h1>
+          <h1 className='summary-item'>Headline{title}</h1>
           <p className='summary-item time'>{moment(time).fromNow()}</p>
           <p className='summary-item like-p'>{likes}<br/> likes</p>
         </div>
@@ -30,7 +30,7 @@ export const QuestionSummary = (props) => {
         <div className='summary-body'>
           <p className='summary-text' key={props.id}>{props.question}</p>
           {/* Calculation with moment for setting the time that has passed since publication */}
-          <Button title='read more ➡'/>
+          <ButtonInput>read more ➡</ButtonInput>
         </div>
       </Link>
     </div>
