@@ -33,19 +33,20 @@ export const AddQuestion = () => {
         </section>
         <section>
           <label>Your question</label>
-            <input
-            className='add-text'
-              type='text'
-              // value={question}
-            />
+            <textarea
+              rows='7'
+              className='add-text'
+              // onChange={event => setMessage(event.target.value)}
+              // value={message}
+            ></textarea>
         </section>
           <input
           className='add-submit'
           type='submit'
-          value='add question'
+          value='ask question'
           ></input>
     </form> 
-    <div>
+    <div className='instruction-div'>
       <h3 className='add-instruction-headline'>Write your question here! </h3>
       <p className='add-instruction-p'>Include links to your own blog, social media etc.</p>
     </div>

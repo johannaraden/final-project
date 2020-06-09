@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory, Link } from 'react-router-dom'
 import { QuestionSummary } from '../components/QuestionSummary'
 import { QuestionMenu } from '../components/QuestionMenu'
+import { QuestionDetails } from '../components/QuestionDetails'
 
   export const QuestionsPage = () => {
 
@@ -17,15 +19,16 @@ import { QuestionMenu } from '../components/QuestionMenu'
 
     })
     return (
-      <section className=''>
+      <section className='questions-list'>
         <QuestionMenu />
         {data.map((item) => {
           return (
-            <QuestionSummary 
-              key={item._id} id={item._id} likes={item.likes} question={item.question} time={item.createdAt}
-            />
+              <QuestionSummary 
+                key={item._id} id={item._id} likes={item.likes} question={item.question} time={item.createdAt}
+              />
           )
         })}
+        <QuestionDetails />
       </section>
     )
   }

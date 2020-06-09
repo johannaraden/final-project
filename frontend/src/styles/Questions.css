@@ -1,5 +1,8 @@
 /* Question page */
 
+.questions-list a {
+  text-decoration: none;
+}
 
 /* Question summary */
 

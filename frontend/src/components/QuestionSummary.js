@@ -20,7 +20,7 @@ export const QuestionSummary = (props) => {
   }
   return (
     <div className='question-summary'>
-      <Link to={`/question/${id}`}>
+      <Link to={`/questions/${id}`}>
         <div className='summary-header'>
           <h1 className='summary-item'>Headline{title}</h1>
           <p className='summary-item time'>{moment(time).fromNow()}</p>
