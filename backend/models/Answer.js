@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const Answer = mongoose.model('Answer', {
+export const Answer = mongoose.model('Answer', {
   answerId: {
     type: Number,
   },
@@ -14,7 +14,10 @@ const Answer = mongoose.model('Answer', {
   likes: {
     type: Number,
     default: 0
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now()
   }
 })
 
-export default Answer
