@@ -8,7 +8,7 @@ import '../styles/Questions.css'
 
 
 export const QuestionSummary = (props) => {
-  const {id, likes, time, question, title} = props
+  const {id, likes, time, answers, question, title} = props
   const dispatch = useDispatch()
 
   const likeClick = () => {
@@ -22,14 +22,15 @@ export const QuestionSummary = (props) => {
     <div className='question-summary'>
       <Link to={`/questions/${id}`}>
         <div className='summary-header'>
-          <h1 className='summary-item'>Headline{title}</h1>
+          <h1 className='summary-item'>{title}</h1>
+          {/* Calculation with moment for setting the time that has passed since publication */}
           <p className='summary-item time'>{moment(time).fromNow()}</p>
           <p className='summary-item like-p'>{likes}<br/> likes</p>
         </div>
         <hr></hr>
         <div className='summary-body'>
           <p className='summary-text' key={props.id}>{props.question}</p>
-          {/* Calculation with moment for setting the time that has passed since publication */}
+          <p>{answers.length}</p>
           <ButtonInput>read more ➡</ButtonInput>
         </div>
       </Link>

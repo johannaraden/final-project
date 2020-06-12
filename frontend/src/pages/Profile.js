@@ -1,6 +1,6 @@
 import React from 'react'
-import { user } from '../reducers/user'
-import { logout } from '../reducers/user'
+import { user, logout } from '../reducers/user'
+// import { logout } from '../reducers/user'
 import { Headline } from '../lib/headline'
 import { InputButton, ProfileImg } from '../lib/button'
 import { ProfileMessage, ProfileDiv, ProfileInfo } from '../lib/form'

@@ -33,6 +33,7 @@ export const AskButton = styled.button`
   padding: 1em 2em;
   text-align: center;
   font-size: 1em;
+  margin-left: 2em;
   border: none;
   &:hover {
     background: palegoldenrod;

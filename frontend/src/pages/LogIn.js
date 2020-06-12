@@ -14,10 +14,10 @@ export const LogIn = () => {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
 
-  // If user is logged in, show profile
+  // If user is logged in, show home page
   useEffect(() => {
     if (accessToken) {
-      history.push('/secret')
+      history.push('/home')
       console.log('push successful')
     }
   })

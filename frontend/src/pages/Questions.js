@@ -9,7 +9,7 @@ import { QuestionDetails } from '../components/QuestionDetails'
     const [data, setData] = useState([])
 
     useEffect(() => {
-      fetch('https://mongodb-questions.herokuapp.com/questions')
+      fetch('http://localhost:8080/questions')
       .then(res => 
         res.json()
       )
@@ -24,7 +24,7 @@ import { QuestionDetails } from '../components/QuestionDetails'
         {data.map((item) => {
           return (
               <QuestionSummary 
-                key={item._id} id={item._id} likes={item.likes} question={item.question} time={item.createdAt}
+                key={item._id} id={item._id} likes={item.likes} title={item.title} answers={item.answer} question={item.question} time={item.createdAt}
               />
           )
         })}

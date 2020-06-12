@@ -1,22 +1,22 @@
 import React from 'react'
 import '../styles/Header.css'
 import { Link } from 'react-router-dom' 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../reducers/user'
 
 export const HeaderThumbnail = () => {
   const dispatch = useDispatch()
+  const userName = useSelector((store) => store.user.login.userName)
 
   return (
-    <div class="thumbnail">
+    <div className="thumbnail">
       <Link to='/profile'>
         <img className='header-thumbnail' src='https://www.fillmurray.com/50/50' alt='profile picture'></img>
       </Link>
       <Link to='/profile'>
-        <p>Welcome 'name'</p>
+        <p>Welcome {userName}</p>
       </Link>
       <Link to='/login'><button type='submit' onClick={() => dispatch(logout())} value='Log Out'>log out</button></Link>
     </div>
-    // Conditional rendering of profile picture&log out button
   )
 }

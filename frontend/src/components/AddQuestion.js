@@ -1,34 +1,31 @@
 import React, { useState } from 'react'
 import '../styles/AddForm.css'
 import { useDispatch } from 'react-redux'
-// import { questions } from '../reducers/reducer'
+import { question } from '../reducers/question'
 
 
 export const AddQuestion = () => {
   const dispatch = useDispatch()
-  const [inputValue, setInputValue] = useState('')
+  const [title, setTitle] = useState('')
+  const [newQuestion, setNewQuestion] = useState('')
 
-  // const handleSubmit = e => {
-  //   // e.preventDefault()
-  //   dispatch(questions.actions.addQuestion({
-  //     question: {
-  //       title: inputValue,
-  //       question: inputValue
-  //     }
-  //   })
-  //   )
-  //   setInputValue('')
-  // }
+  const handleSubmit = e => {
+    e.preventDefault()
+    dispatch(question.actions.addQuestion(title, newQuestion))
+    setTitle('')
+    setNewQuestion('')
+  }
+
   return (
     <section className='form-div'>
-      <form className='add-form'>
-        {/* onSubmit={handleSubmit} */}
+      <form className='add-form' onSubmit={handleSubmit}>
       <section>
           <label>Title</label>
             <input
               className='add-title'
               type='text'
-              // value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              value={title}
             />
         </section>
         <section>
@@ -36,8 +33,8 @@ export const AddQuestion = () => {
             <textarea
               rows='7'
               className='add-text'
-              // onChange={event => setMessage(event.target.value)}
-              // value={message}
+              onChange={(event) => setNewQuestion(event.target.value)}
+              value={newQuestion}
             ></textarea>
         </section>
           <input

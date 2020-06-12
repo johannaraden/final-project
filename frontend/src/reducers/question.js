@@ -14,11 +14,12 @@ export const question = createSlice({
   initialState: initialState,
   reducers: {
     //addQuestion
-    addQuestion: (state, action) => {
-      state.players.items.push(action.payload.playerName)
-    },
-    //addPoint
-    //reducePoint
+    // addQuestion: (state, action) => {
+    //   const { title, question } = action.payload
+    //   state.question.push(action.payload)
+    // },
+    //addLike
+
     setTitle: (state, action) => {
       const { title } = action.payload;
       console.log(`Secret Message: ${title}`);
@@ -42,7 +43,7 @@ export const addQuestion = (title, question) => {
       body: JSON.stringify({ title, question }),
       headers: { 'Content-Type': 'application/json' },
     })
-      .then(console.log('posted registration info to API...'))
+      .then(console.log('posted question to API...'))
       .then((res) => {
         if (res.ok) {
           return res.json()
