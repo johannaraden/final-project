@@ -10,6 +10,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { user } from './reducers/user'
 import { question } from './reducers/question'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import QuestionDetails from 'components/QuestionDetails'
 
 const saveToLocalStorage = (state) => {
   try {
@@ -54,6 +55,7 @@ export const App = () => {
           <Route path='/home' exact ><Home /></Route>
           <Route path='/profile' exact ><Profile /></Route>
           <Route path='/questions' exact ><QuestionsPage /></Route>
+          <Route path='/question' exact ><QuestionDetails /></Route>
         </Switch>
       </BrowserRouter>
     </Provider>

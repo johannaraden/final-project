@@ -12,7 +12,7 @@ export const QuestionSummary = (props) => {
   const dispatch = useDispatch()
 
   const likeClick = () => {
-    fetch(`https://technigo-thoughts.herokuapp.com/${id}/like`, {
+    fetch(`http://localhost:8080/${id}/like`, {
       method: "POST",
       body: "",
       headers: { "Content-Type": "application/json" }
@@ -20,9 +20,10 @@ export const QuestionSummary = (props) => {
   }
   return (
     <div className='question-summary'>
-      <Link to={`/questions/${id}`}>
+      <Link to={`/question?id=${id}`} >
         <div className='summary-header'>
           <h1 className='summary-item'>{title}</h1>
+          <p>{id}</p>
           {/* Calculation with moment for setting the time that has passed since publication */}
           <p className='summary-item time'>{moment(time).fromNow()}</p>
           <p className='summary-item like-p'>{likes}<br/> likes</p>
@@ -30,7 +31,7 @@ export const QuestionSummary = (props) => {
         <hr></hr>
         <div className='summary-body'>
           <p className='summary-text' key={props.id}>{props.question}</p>
-          <p>{answers.length}</p>
+          <p>{answers}</p>
           <ButtonInput>read more ➡</ButtonInput>
         </div>
       </Link>
