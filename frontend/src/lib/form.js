@@ -8,6 +8,7 @@ export const ProfileMessage = styled.p`
   color: black;
   text-align: center;
   font-size: 1.2em;
+  margin-top: 0;
 `
 export const Form = styled.form`
   width: 60%;
