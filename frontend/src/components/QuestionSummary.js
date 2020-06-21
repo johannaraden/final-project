@@ -12,7 +12,7 @@ export const QuestionSummary = (props) => {
   const dispatch = useDispatch()
 
   const likeClick = () => {
-    fetch(`http://localhost:8080/${id}/like`, {
+    fetch(`https://final-pr.herokuapp.com/${id}/like`, {
       method: "POST",
       body: "",
       headers: { "Content-Type": "application/json" }

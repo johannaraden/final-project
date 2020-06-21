@@ -38,9 +38,10 @@ export const user = createSlice({
   },
 })
 
+//
 //Thunks
 export const signup = (name, email, password) => {
-  const SIGNUP_URL = 'https://authentication-jj.herokuapp.com/users'
+  const SIGNUP_URL = 'http://localhost:8080/users'
   return (dispatch) => {
     console.log('Trying to sign up ...')
     fetch(SIGNUP_URL, {
@@ -68,7 +69,7 @@ export const signup = (name, email, password) => {
 }
 
 export const login = (name, password) => {
-  const LOGIN_URL = 'https://authentication-jj.herokuapp.com/sessions'
+  const LOGIN_URL = 'http://localhost:8080/sessions'
   return (dispatch) => {
     fetch(LOGIN_URL, {
       method: 'POST',
@@ -88,6 +89,7 @@ export const login = (name, password) => {
         dispatch(user.actions.setLoginResponse({ accessToken: json.accessToken, userId: json.userId }))
         dispatch(user.actions.setUserName({ userName: json.name }))
         dispatch(user.actions.setErrorMessage({ errorMessage: null }))
+        localStorage.setItem('id', json.accessToken)
       })
       .catch((err) => {
         dispatch(user.actions.setErrorMessage({ errorMessage: err }))
@@ -102,5 +104,6 @@ export const logout = () => {
     dispatch(user.actions.setLoginResponse({ accessToken: null, userId: 0 }))
     dispatch(user.actions.setSecretMessage({ secretMessage: null }))
     dispatch(user.actions.setUserName({ userName: null }))
+    localStorage.clear() 
   }
 }

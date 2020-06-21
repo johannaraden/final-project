@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
 import '../styles/AddForm.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { question } from '../reducers/question'
+import { addQuestion } from '../reducers/question'
 
 
 export const AddQuestion = () => {
   const dispatch = useDispatch()
   const [title, setTitle] = useState('')
-  const [newQuestion, setNewQuestion] = useState('')
+  const [question, setQuestion] = useState('')
+  const userId = useSelector((store) => store.user.login.userId)
 
   const handleSubmit = e => {
     e.preventDefault()
-    dispatch(question.actions.addQuestion(title, newQuestion))
+    console.log(title, question)
+    dispatch(addQuestion(title, question, userId))
     setTitle('')
-    setNewQuestion('')
+    setQuestion('')
   }
 
   return (
@@ -33,8 +36,8 @@ export const AddQuestion = () => {
             <textarea
               rows='7'
               className='add-text'
-              onChange={(event) => setNewQuestion(event.target.value)}
-              value={newQuestion}
+              onChange={(event) => setQuestion(event.target.value)}
+              value={question}
             ></textarea>
         </section>
           <input

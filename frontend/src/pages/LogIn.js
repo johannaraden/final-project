@@ -19,6 +19,8 @@ export const LogIn = () => {
     if (accessToken) {
       history.push('/home')
       console.log('push successful')
+      //localStorage is not working
+      localStorage.id = user.accessToken
     }
   })
   // clean up the error message from previous page
@@ -56,7 +58,7 @@ export const LogIn = () => {
             />
             {errorMessage && <ProfileMessage>{`${errorMessage}`}</ProfileMessage>}
             <Button type='submit' title='Log in' />
-            <Register>Not a member?<Link to="/">Sign up</Link></Register>
+            <Register>Not a member?<Link to="/signup">Sign up</Link></Register>
           </InfoDiv>
         </Form>
       </div>

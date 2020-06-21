@@ -14,7 +14,7 @@ export const SignUp = () => {
   const errorMessage = useSelector((store) => store.user.login.errorMessage)
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('')
 
   useEffect(() => {
     if (accessToken) {
@@ -61,7 +61,7 @@ export const SignUp = () => {
               onChange={(event) => setPassword(event.target.value)}
             />
             <Button type='submit' title='Sign up' />
-            <Register>Already a member?<Link to='/login'>Log in</Link></Register>
+            <Register>Already a member?<Link to='/'>Log in</Link></Register>
           </InfoDiv>
         </Form>
       </div>

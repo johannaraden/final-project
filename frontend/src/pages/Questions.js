@@ -4,18 +4,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { QuestionSummary } from '../components/QuestionSummary'
 import { QuestionMenu } from '../components/QuestionMenu'
 import { QuestionDetails } from '../components/QuestionDetails'
+import { question } from '../reducers/question'
 
-  export const QuestionsPage = () => {
+  export const Questions = () => {
     const dispatch = useDispatch()
-    const local  = 'http://localhost:8080/questions'
+    const newAPI = 'https://final-pr.herokuapp.com/questions'
     const deployed = 'https://mongodb-questions.herokuapp.com/questions'
+    const local = 'http://localhost:8080/questions'
     const questionId = useSelector((store) => store.question.questionId);
     const [data, setData] = useState([])
     const [details, setDetails] = useState('')
-
+    // const { questionId, title, question, index } = props
 
     useEffect(() => {
-      fetch(deployed)
+      fetch(local)
       .then(res => 
         res.json()
       )
@@ -27,35 +29,27 @@ import { QuestionDetails } from '../components/QuestionDetails'
 
     // using the reducer to set a question and use for conditional rendering??? 
 
-    // const setDetails = (event) => {
-    //   event.preventDefault()
-    //   //dispatch thunk
-    //   dispatch((name, password))
-    //   setName('')
-    //   setPassword('')
-    // }
+    const chooseQuestion = (event, item) => {
+      event.preventDefault()
+      //dispatch thunk
+      // dispatch(details(questionId))
+      dispatch(question.actions.setTitle({ title: item.title }))
+      console.log('hej')
+      setDetails('')
+    }
+    
     return (
-      <>
-      {!questionId ? (
-        <section className='questions-list'>
-        <QuestionMenu />
+      <section className='questions-list'>
+       <QuestionMenu />
         {data.map((item) => {
           return (
-              <QuestionSummary onClick={event => setDetails(event)}
-                key={item._id} id={item._id} likes={item.likes} title={item.title} answers={item.answer} question={item.question} time={item.createdAt}
-              />
-          )
-        })}
+            <QuestionSummary onClick={event => chooseQuestion(event, item)}
+              key={item._id} id={item._id} userId={item.userId} likes={item.likes} title={item.title} answers={item.answer} question={item.question} time={item.createdAt}
+            />
+          )}
+            
+        )}
       </section>
-      ) : (
-        <>
-        <p>X</p>
-        </>
-          // <QuestionDetails id={questionId}/>
-        ) 
-      }
-    </>
-    )
-  }
-
-export default QuestionsPage
+    )        
+}
+export default Questions

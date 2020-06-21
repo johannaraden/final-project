@@ -18,13 +18,18 @@ export const QuestionMenu = () => {
       setShowQuestionForm(false)
     }
   }
+
+  const sortByLikes = () => {
+    // dispatch(login(name, password))
+  }
+
+
   return (
     <>
     <div className='questions-menu'>
-      <FilterButton>Most popular</FilterButton>
+      <FilterButton onClick={sortByLikes}>Most popular</FilterButton>
       <FilterButton>Unanswered</FilterButton>
       <form className='questions-options'>
-        {/* add onChange */}
         <select name='question-sorting' defaultValue=' ' className='question-sorting'>
           <option value=' '>Options</option>
           <option value='newest-first'>Newest first</option>

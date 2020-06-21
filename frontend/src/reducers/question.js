@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { useSelector } from 'react-redux'
+
 
 const initialState = {
   question: {
@@ -13,7 +15,7 @@ export const question = createSlice({
   name: 'question',
   initialState: initialState,
   reducers: {
-    //addQuestion
+    // addQuestion
     // addQuestion: (state, action) => {
     //   const { title, question } = action.payload
     //   state.question.push(action.payload)
@@ -30,30 +32,41 @@ export const question = createSlice({
       console.log(`Error Message: ${question}`);
       state.question.question = question;
     },
+    setId: (state, action) => {
+      const { id } = action.payload;
+      console.log(`Error Message: ${id}`);
+      state.question.questionId = id;
+    }
   }
 
 })
 
-export const addQuestion = (title, question) => {
+
+
+export const addQuestion = (title, newQuestion, userId) => {
   const POST_URL = 'http://localhost:8080/questions'
   return (dispatch) => {
     console.log('Posting a question ...')
+    console.log(userId)
     fetch(POST_URL, {
       method: 'POST',
-      body: JSON.stringify({ title, question }),
+      body: JSON.stringify({ title, question: newQuestion, userId }),
       headers: { 'Content-Type': 'application/json' },
     })
-      .then(console.log('posted question to API...'))
+      // .then(console.log('posted question to API...'))
       .then((res) => {
         if (res.ok) {
           return res.json()
         }
+        console.log(res)
         throw 'Could not post question.'
       })
       .then((json) => {
         console.log(json)
+        console.log(question)
         dispatch(question.actions.setTitle({ title: json.title}))
         dispatch(question.actions.setQuestion({ question: json.question }))
+        console.log(json)
         // dispatch(question.actions.setErrorMessage({ errorMessage: null }))
       })
       // .catch((err) => {
@@ -61,3 +74,11 @@ export const addQuestion = (title, question) => {
       // })
   }
 }
+
+// export const likeClick = () => {
+//   fetch(`https://final-pr.herokuapp.com/${id}/like`, {
+//     method: "POST",
+//     body: "",
+//     headers: { "Content-Type": "application/json" }
+//   }).then(() => props.onLiked(id))
+// }

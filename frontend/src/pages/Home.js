@@ -15,18 +15,18 @@ export const Home = () => {
           <p>This is your latest activity</p>
         </div>
         <div className='tabs-home-collection'>
-        <Tabs defaultTab='vertical-tab-one' vertical>
-        <TabList>
-          <Tab tabFor='vertical-tab-one'>Your latest questions</Tab>
-          <Tab tabFor='vertical-tab-two'>Your latest answers</Tab>
-        </TabList>
-        <TabPanel tabId='vertical-tab-one'>
-          <p>Tab 1 content</p>
-        </TabPanel>
-        <TabPanel tabId='vertical-tab-two'>
-          <p>Tab content</p>
-        </TabPanel>
-      </Tabs>
+          <Tabs defaultTab='vertical-tab-one' vertical>
+          <TabList>
+            <Tab tabFor='vertical-tab-one'>Your latest questions</Tab>
+            <Tab tabFor='vertical-tab-two'>Your latest answers</Tab>
+          </TabList>
+          <TabPanel tabId='vertical-tab-one'>
+            <p>Tab 1 content</p>
+          </TabPanel>
+          <TabPanel tabId='vertical-tab-two'>
+            <p>Tab content</p>
+          </TabPanel>
+        </Tabs>
       </div>
       </section>
     )
