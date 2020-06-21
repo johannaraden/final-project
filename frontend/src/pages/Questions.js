@@ -14,7 +14,6 @@ import { question } from '../reducers/question'
     const questionId = useSelector((store) => store.question.questionId);
     const [data, setData] = useState([])
     const [details, setDetails] = useState('')
-    // const { questionId, title, question, index } = props
 
     useEffect(() => {
       fetch(local)
@@ -34,7 +33,6 @@ import { question } from '../reducers/question'
       //dispatch thunk
       // dispatch(details(questionId))
       dispatch(question.actions.setTitle({ title: item.title }))
-      console.log('hej')
       setDetails('')
     }
     

@@ -16,6 +16,7 @@ export const SignUp = () => {
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
 
+  // If accesstoken then send successfully to home page. 
   useEffect(() => {
     if (accessToken) {
       history.push('/')

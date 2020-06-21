@@ -32,10 +32,15 @@ export const question = createSlice({
       console.log(`Error Message: ${question}`);
       state.question.question = question;
     },
-    setId: (state, action) => {
+    setQuestionId: (state, action) => {
       const { id } = action.payload;
       console.log(`Error Message: ${id}`);
       state.question.questionId = id;
+    },
+    setAnswer: (state, action) => {
+      const { text } = action.payload;
+      console.log(`Error Message: ${text}`);
+      state.question.text = text;
     }
   }
 
@@ -74,6 +79,45 @@ export const addQuestion = (title, newQuestion, userId) => {
       // })
   }
 }
+
+
+export const addAnswer = (text, questionId, userId) => {
+  const POST_URL = 'http://localhost:8080//question/:id/answers'
+  return (dispatch) => {
+    console.log('Posting a question ...')
+    console.log(userId)
+    console.log(questionId)
+    fetch(POST_URL, {
+      method: 'POST',
+      body: JSON.stringify({ text, questionId, userId }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      // .then(console.log('posted question to API...'))
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        }
+        console.log(res)
+        throw 'Could not post answer.'
+      })
+      .then((json) => {
+        console.log(json)
+        console.log(text)
+        dispatch(question.actions.setText({ text: json.text}))
+        console.log(json)
+      })
+      // .catch((err) => {
+      //   dispatch(question.actions.setErrorMessage({ errorMessage: err }))
+      // })
+  }
+}
+
+
+
+
+
+
+
 
 // export const likeClick = () => {
 //   fetch(`https://final-pr.herokuapp.com/${id}/like`, {
