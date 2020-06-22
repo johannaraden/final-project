@@ -6,12 +6,10 @@ import { addAnswer } from '../reducers/question'
 
 
 
-export const AddAnswer = () => {
+export const AddAnswer = ({questionId}) => {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
-  const userId = useSelector((store) => store.user.login.userId)
-  const questionId = useSelector((store) => store.user.question.questionId)
- 
+  const userId = useSelector((store) => store.user.login.userId) 
 
   
 

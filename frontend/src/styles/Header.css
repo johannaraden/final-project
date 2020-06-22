@@ -1,5 +1,12 @@
 /* Header */
 
+.home-div {
+  background-color: #72d2c6;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1em;
+}
+
 .tab {
   position: relative;
   width: 100%;

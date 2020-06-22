@@ -16,7 +16,7 @@ export const HeaderThumbnail = () => {
       <Link to='/profile'>
         <p>Welcome {userName}</p>
       </Link>
-      <Link to='/login'><button type='submit' onClick={() => dispatch(logout())} value='Log Out'>log out</button></Link>
+      <Link to='/'><button type='submit' onClick={() => dispatch(logout())} value='Log Out'>log out</button></Link>
     </div>
   )
 }

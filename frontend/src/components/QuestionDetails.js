@@ -30,22 +30,26 @@ import { AddAnswer} from './AddAnswer'
       )
       .then((data) => {
         setQuestion(data)
-      }, [id])
-    })
+      })
+    }, [id])
 
     // Want to change state in reducer in order to fetch the choosen questions answers 
+    
+    
     // useEffect(() => {
     //   dispatch(question.actions.setQuestionId( question.id ))
     // }, [dispatch])
-    // useEffect(() => {
-    //   fetch(`http://localhost:8080/user/${question.userId}`)
-    //   .then(res => 
-    //     res.json()
-    //   )
-    //   .then((data) => {
-    //     setUser(data)
-    //   }, [question.userId])
-    // })
+
+
+    useEffect(() => {
+      fetch(`http://localhost:8080/user/${question.userId}`)
+      .then(res => 
+        res.json()
+      )
+      .then((data) => {
+        setUser(data)
+      })
+    }, [question.userId])
     // const likeClick = () => {
     //   dispatch(likeClick(id))
     // } 
@@ -97,13 +101,13 @@ import { AddAnswer} from './AddAnswer'
           Add Answer
         </AskButton>
           {showAnswerForm && (
-            <AddAnswer>
+            <AddAnswer questionId={question._id}>
             </AddAnswer>
           )}
         <div className='answers-div'>
           <h2 className='answer-headline'>Answers</h2>
           {
-          !question.answer && <p>there are answers available</p>
+          question.answer && question.answer.length > 0 && <p>there are answers available</p>
           }
           {console.log({answers: question.answer})}
 

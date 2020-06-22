@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import '../styles/Header.css'
 
 const SearchDiv = styled.div`
@@ -7,11 +9,16 @@ const SearchDiv = styled.div`
   font-size: 1em;
 `
 
+const SearchForm = styled.form`
+
+`
+
 const HomeDiv = styled.div`
-  background-color: #72d2c6;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1em;
+
+`
+
+const HomeForm = styled.form`
+
 `
 
 const Search = styled.input`
@@ -31,24 +38,27 @@ const HomeSearch = styled.input`
   color: white;
   font-size: 1.8em;
   padding-left: 1em; 
+  cursor: pointer;
   `
 
-
 export const MainSearch = () => {
+  
   return (
-    <HomeDiv>
-      <ForumHeadline>[Topic] Forum🎈</ForumHeadline>
-      <HomeSearch placeholder='search question' type='text'>
-      </HomeSearch>
-    </HomeDiv>
+      <HomeForm>
+        <HomeSearch placeholder='search question' type='search'>
+        </HomeSearch>
+        <button type='submit'>sök</button>
+      </HomeForm>
   )
 }
 
 export const SearchField = () => {
   return (
     <SearchDiv>
-      <Search placeholder='search question' type='text'>
-      </Search>
+      <SearchForm>
+        <Search placeholder='search question' type='search'>
+        </Search>
+      </SearchForm>
     </SearchDiv>
   )
 }

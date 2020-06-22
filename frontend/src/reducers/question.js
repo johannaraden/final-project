@@ -82,7 +82,7 @@ export const addQuestion = (title, newQuestion, userId) => {
 
 
 export const addAnswer = (text, questionId, userId) => {
-  const POST_URL = 'http://localhost:8080//question/:id/answers'
+  const POST_URL = `http://localhost:8080/question/${questionId}/answers`
   return (dispatch) => {
     console.log('Posting a question ...')
     console.log(userId)
@@ -112,6 +112,37 @@ export const addAnswer = (text, questionId, userId) => {
   }
 }
 
+
+// export const questionSearch = (text ) => {
+//   const POST_URL = `http://localhost:8080/question/${questionId}/answers`
+//   return (dispatch) => {
+//     console.log('Posting a question ...')
+//     console.log(userId)
+//     console.log(questionId)
+//     fetch(POST_URL, {
+//       method: 'POST',
+//       body: JSON.stringify({ text, questionId, userId }),
+//       headers: { 'Content-Type': 'application/json' },
+//     })
+//       // .then(console.log('posted question to API...'))
+//       .then((res) => {
+//         if (res.ok) {
+//           return res.json()
+//         }
+//         console.log(res)
+//         throw 'Could not post answer.'
+//       })
+//       .then((json) => {
+//         console.log(json)
+//         console.log(text)
+//         dispatch(question.actions.setText({ text: json.text}))
+//         console.log(json)
+//       })
+//       // .catch((err) => {
+//       //   dispatch(question.actions.setErrorMessage({ errorMessage: err }))
+//       // })
+//   }
+// }
 
 
 

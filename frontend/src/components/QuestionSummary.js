@@ -11,13 +11,13 @@ export const QuestionSummary = (props) => {
   const {id, likes, time, answers, question, title} = props
   const dispatch = useDispatch()
 
-  const likeClick = () => {
-    fetch(`https://final-pr.herokuapp.com/${id}/like`, {
-      method: "POST",
-      body: "",
-      headers: { "Content-Type": "application/json" }
-    }).then(() => props.onLiked(id))
-  }
+  // const likeClick = () => {
+  //   fetch(`https://final-pr.herokuapp.com/${id}/like`, {
+  //     method: "POST",
+  //     body: "",
+  //     headers: { "Content-Type": "application/json" }
+  //   }).then(() => props.onLiked(id))
+  // }
   return (
     <div className='question-summary'>
       <Link to={`/question?id=${id}`} >

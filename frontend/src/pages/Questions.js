@@ -22,9 +22,8 @@ import { question } from '../reducers/question'
       )
       .then((data) => {
         setData(data)
-      }, [])
-
-    })
+      })
+    }, [])
 
     // using the reducer to set a question and use for conditional rendering??? 
 
