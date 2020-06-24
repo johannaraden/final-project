@@ -15,7 +15,7 @@ import { AddAnswer} from './AddAnswer'
     let params = new URLSearchParams(search)
     let id = params.get('id')
     const dispatch = useDispatch()
-    const [question, setQuestion] = useState([])
+    const [question, setQuestion] = useState()
     const [answer, setAnswer] = useState([])
     const [showAnswerForm, setShowAnswerForm] = useState(false)
     const [user, setUser] = useState([])
@@ -33,7 +33,7 @@ import { AddAnswer} from './AddAnswer'
 
     // Want to change state in reducer in order to fetch the choosen questions answers 
   
-    console.log(question.userId)
+    console.log(id)
 
     useEffect(() => {
       fetch(`http://localhost:8080/user/${question.userId}`)
@@ -79,60 +79,62 @@ import { AddAnswer} from './AddAnswer'
     return (
       <section className='details-page'>
         <Link to={'/questions'} className='back'>
-        <BackArrow className='to-list-arrow'></BackArrow> 
-        <p>To list</p>
-        </Link> 
-      <div className='question-details-page'>
-        <div className='question-detail-header'>
-          <div className='header-about'>
-        <h2 className='question-headline'>{question.title}</h2>
-        <p>{question.createdAt}</p>
-        <p>Created by: <strong>{user.name}</strong></p>
-        <p>{question.id}</p>
-        </div>
-        <div className='header-likes'>
-        <span className={question.likes > 10 ? "lots" : question.likes > 5 ? "few" : "none" } onClick={likeClick}>
-           {/* Conditional operators for setting different classes depending on number of likes */}
-          <img className="heart" alt="heart-icon" src="https://img.icons8.com/cotton/64/000000/like--v1.png"/>
-        </span>
-        <p className='like-p'>liked <strong>{question.likes}</strong> times</p>
-        </div>
-        </div>
-        <hr></hr>
-        <p>{question.question}</p>
-        <p className='add-instruction'>Do you have an opinion or solution? Add your answer below!</p>
-        </div>
-        <AskButton style={{'margin': 'auto'}} type="button" onClick={newAnswer}>
-          Add Answer
-        </AskButton>
+          <BackArrow className='to-list-arrow'></BackArrow> 
+          <p>To list</p>
+        </Link>
+        {/* render when api res */}
+        {question && (
+          <div className='question-details-page'>
+            <div className='question-detail-header'>
+              <div className='header-about'>
+                <h2 className='question-headline'>{question.title}</h2>
+                <p>{question.createdAt}</p>
+                <p>Created by: <strong>{user.name}</strong></p>
+                <p>{question.id}</p>
+              </div>
+              <div className='header-likes'>
+                <span className={question.likes > 10 ? "lots" : question.likes > 5 ? "few" : "none" } onClick={likeClick}>
+                {/* Conditional operators for setting different classes depending on number of likes */}
+                  <img className="heart" alt="heart-icon" src="https://img.icons8.com/cotton/64/000000/like--v1.png"/>
+                </span>
+                <p className='like-p'>liked <strong>{question.likes}</strong> times</p>
+              </div>
+            </div>
+            <hr></hr>
+            <p>{question.question}</p>
+            <p className='add-instruction'>Do you have an opinion or solution? Add your answer below!</p>
+          </div>
+          <AskButton style={{'margin': 'auto'}} type="button" onClick={newAnswer}>
+            Add Answer
+          </AskButton>
           {showAnswerForm && (
             <AddAnswer questionId={question._id}>
             </AddAnswer>
           )}
-        <div className='answers-div'>
-          <h2 className='answer-headline'>Answers</h2>
-          {
-          question.answer && question.answer.length > 0 && <p>there are answers available</p>
-          }
-          {console.log({answers: question.answer})}
-          {console.log(answer)}
-
-          {answer.map((item) => {
-          return (
+          <div className='answers-div'>
+            <h2 className='answer-headline'>Answers</h2>
+            {
+            answer && answer.length > 0 && <p>there are answers available</p>
+            }
+            {console.log({answers: question})}
+            {question.answer.map((item) => {
+              return (
+                console.log(item)
               <AnswerCard 
                 key={item._id} id={item._id} likes={item.likes} answer={item.text} time={item.createdAt}
               />
-          )
-        })}
-            {/* <div className='answer'>
+              )
+            })}
+            <div className='answer'>
               <h4>Title</h4>
               <p>Created At</p>
               <p>Created by:</p>
               <hr></hr>
               <p>Text</p>
-            </div> */}
+            </div>
             <AnswerCard />
-        </div>
+          </div>
+      )}
       </section>
     )
   }

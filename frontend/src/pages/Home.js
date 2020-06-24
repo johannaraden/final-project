@@ -58,8 +58,8 @@ export const Home = () => {
             {myQuestions.map((item) => {
               return (
                 <Link to='/profile'>
-                  <QuestionSummary
-                  key={item._id} id={item._id} userId={item.userId} title={item.title} answers={item.answer} question={item.question}
+                  <QuestionSummary style={{'width': '100%'}}
+                  key={item._id} id={item._id} userId={item.userId} title={item.title} likes={item.likes} answers={item.answer} question={item.question}
                   />
                 </Link>
           )}  
