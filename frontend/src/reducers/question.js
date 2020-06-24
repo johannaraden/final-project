@@ -32,6 +32,11 @@ export const question = createSlice({
       console.log(`Error Message: ${question}`);
       state.question.question = question;
     },
+    setSearch: (state, action) => {
+      const { search } = action.payload;
+      console.log(`Error Message: ${search}`);
+      state.question.search = search;
+    },
     setQuestionId: (state, action) => {
       const { id } = action.payload;
       console.log(`Error Message: ${id}`);
@@ -81,15 +86,15 @@ export const addQuestion = (title, newQuestion, userId) => {
 }
 
 
-export const addAnswer = (text, questionId, userId) => {
+export const addAnswer = (newText, questionId, userId) => {
   const POST_URL = `http://localhost:8080/question/${questionId}/answers`
   return (dispatch) => {
-    console.log('Posting a question ...')
+    console.log('Posting an answer ...')
     console.log(userId)
     console.log(questionId)
     fetch(POST_URL, {
       method: 'POST',
-      body: JSON.stringify({ text, questionId, userId }),
+      body: JSON.stringify({ text: newText, questionId, userId }),
       headers: { 'Content-Type': 'application/json' },
     })
       // .then(console.log('posted question to API...'))
@@ -100,12 +105,12 @@ export const addAnswer = (text, questionId, userId) => {
         console.log(res)
         throw 'Could not post answer.'
       })
-      .then((json) => {
-        console.log(json)
-        console.log(text)
-        dispatch(question.actions.setText({ text: json.text}))
-        console.log(json)
-      })
+      // .then((json) => {
+      //   console.log(json)
+      //   console.log(text)
+      //   dispatch(question.actions.setText({ text: json.text}))
+      //   console.log(json)
+      // })
       // .catch((err) => {
       //   dispatch(question.actions.setErrorMessage({ errorMessage: err }))
       // })
@@ -150,10 +155,18 @@ export const addAnswer = (text, questionId, userId) => {
 
 
 
-// export const likeClick = () => {
-//   fetch(`https://final-pr.herokuapp.com/${id}/like`, {
-//     method: "POST",
-//     body: "",
-//     headers: { "Content-Type": "application/json" }
-//   }).then(() => props.onLiked(id))
-// }
+export const questionLike = (id) => {
+  return (dispatch) => {
+    fetch(`http://localhost:8080/question/${id}/like`, {
+      method: "POST",
+      body: "",
+      headers: { "Content-Type": "application/json" }
+    }) 
+      .then((res) => {
+      if (res.ok) {
+        console.log('one like up')
+      }
+      throw 'Could not post answer.'
+    })
+  }
+}

@@ -10,18 +10,19 @@ export const AddAnswer = ({questionId}) => {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
   const userId = useSelector((store) => store.user.login.userId) 
-
+  console.log(questionId)
   
 
   const handleSubmit = e => {
     e.preventDefault()
     console.log(text)
     dispatch(addAnswer(text, questionId, userId))
+    console.log(text, questionId, userId)
     setText('')
   }
 
   return (
-    <section className='form-div'>
+    <section style={{'width': 'auto', 'margin-top': '2em'}}className='form-div'>
       <form className='add-form' onSubmit={handleSubmit}>
         <section>
           <label>Your Answer</label>
@@ -40,7 +41,6 @@ export const AddAnswer = ({questionId}) => {
     </form> 
     <div className='instruction-div'>
       <h3 className='add-instruction-headline'>Write your answer here! </h3>
-      <p className='add-instruction-p'>Include links to your own blog, social media etc.</p>
     </div>
    </section>
   )

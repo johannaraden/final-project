@@ -2,18 +2,17 @@ import React, { useState, useEffect } from 'react'
 import '../styles/Questions.css'
 
 
-  export const AnswerCard = () => {
-
+  export const AnswerCard = (props) => {
+    const {answerId, likes, time, questionId, text, userId} = props
     // fetch all answers for specific question
    
 
     return (
             <div className='answer'>
-              <h4>Title</h4>
-              <p>Created At</p>
-              <p>Created by:</p>
+              <p>Created At: {time}</p>
+              <p>Created by:{userId}</p>
               <hr></hr>
-              <p>Text</p>
+              <p>{text}</p>
             </div>
     )
   }

@@ -3,7 +3,6 @@ import styled from 'styled-components/macro'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-
  const ForumHeadline = styled.h4`
   color: white;
   font-size: 1.8em;

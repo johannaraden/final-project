@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom' 
+import React, { useState, useSelector } from 'react'
+import { Link, useHistory } from 'react-router-dom' 
 import { useDispatch } from 'react-redux'
 import { FilterButton, AskButton } from '../lib/button'
 import '../styles/Questions.css'
@@ -8,9 +8,9 @@ import { AddQuestion } from './AddQuestion'
 
 
 export const QuestionMenu = () => {
-
+  const history = useHistory()
   const [showQuestionForm, setShowQuestionForm] = useState(false)
-// const dispatch = useDispatch()
+  const [search, setSearch] = useState('')
 
   const newQuestion = () => {
     setShowQuestionForm(true)
@@ -21,6 +21,14 @@ export const QuestionMenu = () => {
 
   const sortByLikes = () => {
     // dispatch(login(name, password))
+  }
+
+ 
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log(search)
+    setSearch('')
   }
 
 
@@ -38,7 +46,10 @@ export const QuestionMenu = () => {
           <option value='least-answers'>Least answers</option>
         </select>
       </form> 
-      <SearchField />
+      <form onSubmit={handleSubmit}>
+        <input className='main-search' type='search' placeholder='search question' value={search}
+          onChange={(event) => setSearch(event.target.value)}/>
+      </form>
       <AskButton type="button" onClick={newQuestion}>
           Ask!
       </AskButton>   

@@ -120,3 +120,12 @@
 .thumbnail img {
   border-radius: 200px;
 }
+
+
+.main-search {
+  border: none;
+  padding: 1em 2em;
+  font-size: 1em;
+  color: #4f4f4f;
+}
+

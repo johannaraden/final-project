@@ -6,7 +6,7 @@ import { AnswerCard } from '../components/AnswerCard'
 import { BackArrow } from '../lib/go-back' 
 import '../styles/Questions.css'
 import { useDispatch } from 'react-redux'
-import { question } from '../reducers/question'
+import { question, questionLike } from '../reducers/question'
 import { AskButton } from '../lib/button'
 import { AddAnswer} from './AddAnswer'
 
@@ -15,14 +15,12 @@ import { AddAnswer} from './AddAnswer'
     let params = new URLSearchParams(search)
     let id = params.get('id')
     const dispatch = useDispatch()
-    // dispatch(question.actions.setId({ id: id }))
-    // const { id } = props
-    // https://mongodb-questions.herokuapp.com/
-    // http://localhost:8080/questions/
     const [question, setQuestion] = useState([])
+    const [answer, setAnswer] = useState([])
+    const [showAnswerForm, setShowAnswerForm] = useState(false)
     const [user, setUser] = useState([])
     const { _id } = useParams()
-    // http://localhost:8080/question/${id}
+
     useEffect(() => {
       fetch(`http://localhost:8080/question/${id}`)
       .then(res => 
@@ -34,35 +32,42 @@ import { AddAnswer} from './AddAnswer'
     }, [id])
 
     // Want to change state in reducer in order to fetch the choosen questions answers 
-    
-    
-    // useEffect(() => {
-    //   dispatch(question.actions.setQuestionId( question.id ))
-    // }, [dispatch])
-
+  
+    console.log(question.userId)
 
     useEffect(() => {
       fetch(`http://localhost:8080/user/${question.userId}`)
-      .then(res => 
-        res.json()
-      )
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        }
+        console.log(res, 'found User!')
+        throw 'Could not find user.'
+      })
       .then((data) => {
         setUser(data)
       })
     }, [question.userId])
-    // const likeClick = () => {
-    //   dispatch(likeClick(id))
-    // } 
+   
+    useEffect(() => {
+      fetch(`http://localhost:8080/question/${id}/answers`)
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        }
+        console.log(id)
+        throw 'Could not find answers.'
+      })
+      .then((data) => {
+        setAnswer(data)
+      })
+    }, [id])
 
-    //  const likeClick = () => {
-    //   fetch(`https://final-pr.herokuapp.com/${id}/like`, {
-    //     method: "POST",
-    //     body: "",
-    //     headers: { "Content-Type": "application/json" }
-    //   })
-    // }
 
-    const [showAnswerForm, setShowAnswerForm] = useState(false)
+    const likeClick = () => {
+      //dispatching thunk
+      dispatch(questionLike(id))
+    }
     
     const newAnswer = () => {
       setShowAnswerForm(true)
@@ -70,7 +75,7 @@ import { AddAnswer} from './AddAnswer'
         setShowAnswerForm(false)
       }
     }
-    // https://final-pr.herokuapp.com/questions/5eecb3454fb8d600234e5038
+
     return (
       <section className='details-page'>
         <Link to={'/questions'} className='back'>
@@ -82,22 +87,22 @@ import { AddAnswer} from './AddAnswer'
           <div className='header-about'>
         <h2 className='question-headline'>{question.title}</h2>
         <p>{question.createdAt}</p>
-        <p>Created by: {user.name}</p>
+        <p>Created by: <strong>{user.name}</strong></p>
         <p>{question.id}</p>
         </div>
         <div className='header-likes'>
-        <span className={question.likes > 10 ? "lots" : question.likes > 5 ? "few" : "none" } >
-        {/* onClick={likeClick} */}
+        <span className={question.likes > 10 ? "lots" : question.likes > 5 ? "few" : "none" } onClick={likeClick}>
            {/* Conditional operators for setting different classes depending on number of likes */}
           <img className="heart" alt="heart-icon" src="https://img.icons8.com/cotton/64/000000/like--v1.png"/>
         </span>
-        <p>liked {question.likes} times</p>
+        <p className='like-p'>liked <strong>{question.likes}</strong> times</p>
         </div>
         </div>
         <hr></hr>
         <p>{question.question}</p>
-        {/* {console.log(question)} */}
-        <AskButton type="button" onClick={newAnswer}>
+        <p className='add-instruction'>Do you have an opinion or solution? Add your answer below!</p>
+        </div>
+        <AskButton style={{'margin': 'auto'}} type="button" onClick={newAnswer}>
           Add Answer
         </AskButton>
           {showAnswerForm && (
@@ -110,16 +115,15 @@ import { AddAnswer} from './AddAnswer'
           question.answer && question.answer.length > 0 && <p>there are answers available</p>
           }
           {console.log({answers: question.answer})}
+          {console.log(answer)}
 
-
-
-          {/* {question.answer.map((item) => {
+          {answer.map((item) => {
           return (
               <AnswerCard 
                 key={item._id} id={item._id} likes={item.likes} answer={item.text} time={item.createdAt}
               />
           )
-        })} */}
+        })}
             {/* <div className='answer'>
               <h4>Title</h4>
               <p>Created At</p>
@@ -129,7 +133,6 @@ import { AddAnswer} from './AddAnswer'
             </div> */}
             <AnswerCard />
         </div>
-      </div>
       </section>
     )
   }

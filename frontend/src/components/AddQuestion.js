@@ -11,8 +11,7 @@ export const AddQuestion = () => {
   const [question, setQuestion] = useState('')
   const userId = useSelector((store) => store.user.login.userId)
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleSubmit = () => {
     console.log(title, question)
     dispatch(addQuestion(title, question, userId))
     setTitle('')

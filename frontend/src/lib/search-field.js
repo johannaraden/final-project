@@ -54,11 +54,7 @@ export const MainSearch = () => {
 
 export const SearchField = () => {
   return (
-    <SearchDiv>
-      <SearchForm>
         <Search placeholder='search question' type='search'>
         </Search>
-      </SearchForm>
-    </SearchDiv>
   )
 }

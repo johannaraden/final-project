@@ -33,6 +33,7 @@
   border: 3px solid white;
   border-radius: 6px;
   text-align: center;
+  margin: auto;
 }
 
 .no-activity a {
@@ -47,4 +48,8 @@
 .no-activity a:hover {
   background-color: white;
   color: palevioletred;
+}
+
+.home-tab {
+  margin: auto;
 }

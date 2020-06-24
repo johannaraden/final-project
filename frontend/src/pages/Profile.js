@@ -39,6 +39,9 @@ export const Profile = () => {
     setDetails('')
   }
 
+  let userStatus = data.length > 10 ? "proper influencer" : data.length > 5 ? "getting there" : "beginner"
+  let userStars = data.length > 10 ? "⭐⭐⭐" : data.length > 5 ? "⭐⭐" : "⭐"
+
   return (
     <div>
     <ProfileInfo>
@@ -47,13 +50,21 @@ export const Profile = () => {
       <div className='tabs-profile-collection'>
           <Tabs defaultTab='vertical-tab-one' vertical>
           <TabList>
-            <Tab tabFor='vertical-tab-one'>Profile</Tab>
-            <Tab tabFor='vertical-tab-two'>Questions</Tab>
+            <Tab tabFor='vertical-tab-one' className='tab'>Profile</Tab>
+            <Tab tabFor='vertical-tab-two' className='tab'>Questions</Tab>
           </TabList>
           <TabPanel tabId='vertical-tab-one'>
-            {/* {secretMessage && <ProfileMessage> {secretMessage} </ProfileMessage>} */}
-            <ProfileMessage>{userName}</ProfileMessage>
-            <ProfileImg src='https://www.fillmurray.com/200/300' alt='profile picture' />
+            <div className='profile-info'>
+              <ProfileImg src='https://www.fillmurray.com/200/300' alt='profile picture' />
+              <div className='profile-details'>
+                <ProfileMessage>{userName}</ProfileMessage>
+                <span className='user-stars'>{userStars}</span>
+                <div className='user-activity'>
+                  <p>Number of posted questions: <strong>{data.length}</strong></p>                
+                  <p>User status: <strong>{userStatus}</strong></p>
+                </div>
+              </div>
+            </div>
           </TabPanel>
           <TabPanel tabId='vertical-tab-two'>
             {/* Fetch and print out the questions for this user */}

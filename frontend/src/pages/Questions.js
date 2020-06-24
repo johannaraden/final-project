@@ -29,8 +29,6 @@ import { question } from '../reducers/question'
 
     const chooseQuestion = (event, item) => {
       event.preventDefault()
-      //dispatch thunk
-      // dispatch(details(questionId))
       dispatch(question.actions.setTitle({ title: item.title }))
       setDetails('')
     }

@@ -11,27 +11,18 @@ export const QuestionSummary = (props) => {
   const {id, likes, time, answers, question, title} = props
   const dispatch = useDispatch()
 
-  // const likeClick = () => {
-  //   fetch(`https://final-pr.herokuapp.com/${id}/like`, {
-  //     method: "POST",
-  //     body: "",
-  //     headers: { "Content-Type": "application/json" }
-  //   }).then(() => props.onLiked(id))
-  // }
   return (
     <div className='question-summary'>
       <Link to={`/question?id=${id}`} >
         <div className='summary-header'>
           <h1 className='summary-item'>{title}</h1>
-          <p>{id}</p>
           {/* Calculation with moment for setting the time that has passed since publication */}
-          <p className='summary-item time'>{moment(time).fromNow()}</p>
+          <p className='summary-item time'>{time}</p>
           <p className='summary-item like-p'>{likes}<br/> likes</p>
         </div>
         <hr></hr>
         <div className='summary-body'>
           <p className='summary-text' key={props.id}>{props.question}</p>
-          <p>{answers}</p>
           <ButtonInput>read more ➡</ButtonInput>
         </div>
       </Link>

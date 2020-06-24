@@ -1,14 +1,16 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import { QuestionSummary } from 'components/QuestionSummary'
 
 export const Register = styled.p`
   color: black;
 `
 export const ProfileMessage = styled.p`
-  color: black;
   text-align: center;
-  font-size: 1.2em;
-  margin-top: 0;
+  font-weight: bold;
+  font-size: 1.4em;
+  color: white;
+  margin: 0;
 `
 export const Form = styled.form`
   width: 60%;
@@ -79,4 +81,12 @@ export const ProfileDiv = styled.div`
   justify-content: center;
   align-items: center;
   width: 90%;
+`
+
+export const Summary = styled(QuestionSummary).attrs({
+  className: 'for-questions-page'
+})`
+  &.for-questions-page {
+    color: red;
+  }
 `
