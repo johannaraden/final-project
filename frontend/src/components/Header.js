@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/Header.css'
 import { Link, useHistory } from 'react-router-dom' 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { HeaderThumbnail } from './HeaderThumbnail'
 import { Headline } from '../lib/forum-headline'
 import Svg from '../lib/next.svg'
+import { question } from '../reducers/question'
 
 
 export const Header = () => {
   const history = useHistory()
   const accessToken = useSelector((store) => store.user.login.accessToken)
   const [search, setSearch] = useState('')
+  const dispatch = useDispatch()
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -24,10 +26,16 @@ export const Header = () => {
     }
   }
 
-    return (
-      <section className='header-menu'>
-        <div className='home-div'>
-          <Headline />
+  useEffect(() => {
+    dispatch(question.actions.setSearchText({ errorMessage: null }))
+  }, )
+
+ 
+
+return (
+  <section className='header-menu'>
+    <div className='home-div'>
+     <Headline />
           <form onSubmit={(event) => handleSubmit(event)}>
             <input className='main-search' type='search' placeholder='search question' value={search}
               onChange={(event) => setSearch(event.target.value)}/>

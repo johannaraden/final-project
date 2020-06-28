@@ -149,7 +149,7 @@
 .answers-div {
   background-color: palevioletred;
   border-radius: 6px;
-  padding-bottom: 2em;
+  padding: 2em 1em;
   margin-top: 6em;
 }
 

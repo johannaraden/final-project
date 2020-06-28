@@ -1,0 +1,27 @@
+.answer-header {
+  display: flex;
+  justify-content: space-between
+}
+
+.answer-card {
+  background-color: white;
+  border-radius: 6px;
+  padding: .5em;
+  margin-bottom: 1em;
+}
+
+.answer-likes {
+  display: flex;
+  flex-direction: column;
+}
+
+.answer-likes > * {
+  align-self: center;
+  margin: 0;
+}
+
+.answer-heart {
+  transform: scale(0.7);
+  margin-bottom: -.8em;
+  cursor: pointer;
+}

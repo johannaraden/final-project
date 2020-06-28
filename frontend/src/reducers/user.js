@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
+import {reactLocalStorage} from 'reactjs-localstorage'
+
 
 const initialState = {
   login: {
@@ -89,7 +91,9 @@ export const login = (name, password) => {
         dispatch(user.actions.setLoginResponse({ accessToken: json.accessToken, userId: json.userId }))
         dispatch(user.actions.setUserName({ userName: json.name }))
         dispatch(user.actions.setErrorMessage({ errorMessage: null }))
-        localStorage.setItem('id', json.accessToken)
+        // localStorage.setItem('id', json.accessToken)
+        // reactLocalStorage.clear()
+        localStorage.clear()
       })
       .catch((err) => {
         dispatch(user.actions.setErrorMessage({ errorMessage: err }))

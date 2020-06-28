@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import {reactLocalStorage} from 'reactjs-localstorage'
 import { user, login } from '../reducers/user'
 import { Headline } from '../lib/headline'
 import { Button } from '../lib/button'
@@ -20,7 +21,9 @@ export const LogIn = () => {
       history.push('/home')
       console.log('push successful')
       //localStorage is not working
-      localStorage.id = user.accessToken
+      // reactLocalStorage.set('var', true)
+      localStorage.setItem('id', accessToken)
+      // localStorage.id = user.accessToken
     }
   })
   // clean up the error message from previous page

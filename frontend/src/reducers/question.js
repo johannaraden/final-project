@@ -6,7 +6,8 @@ const initialState = {
   question: {
     questionId: 0,
     title: null,
-    question: null
+    question: null,
+    searchText: null
   }
 }
 
@@ -15,12 +16,6 @@ export const question = createSlice({
   name: 'question',
   initialState: initialState,
   reducers: {
-    // addQuestion
-    // addQuestion: (state, action) => {
-    //   const { title, question } = action.payload
-    //   state.question.push(action.payload)
-    // },
-    //addLike
 
     setTitle: (state, action) => {
       const { title } = action.payload;
@@ -32,10 +27,10 @@ export const question = createSlice({
       console.log(`Error Message: ${question}`);
       state.question.question = question;
     },
-    setSearch: (state, action) => {
-      const { search } = action.payload;
-      console.log(`Error Message: ${search}`);
-      state.question.search = search;
+    setSearchText: (state, action) => {
+      const { searchText } = action.payload;
+      console.log(`Error Message: ${searchText}`);
+      state.question.search = searchText;
     },
     setQuestionId: (state, action) => {
       const { id } = action.payload;
@@ -48,7 +43,6 @@ export const question = createSlice({
       state.question.text = text;
     }
   }
-
 })
 
 
@@ -63,7 +57,6 @@ export const addQuestion = (title, newQuestion, userId) => {
       body: JSON.stringify({ title, question: newQuestion, userId }),
       headers: { 'Content-Type': 'application/json' },
     })
-      // .then(console.log('posted question to API...'))
       .then((res) => {
         if (res.ok) {
           return res.json()
@@ -77,11 +70,7 @@ export const addQuestion = (title, newQuestion, userId) => {
         dispatch(question.actions.setTitle({ title: json.title}))
         dispatch(question.actions.setQuestion({ question: json.question }))
         console.log(json)
-        // dispatch(question.actions.setErrorMessage({ errorMessage: null }))
       })
-      // .catch((err) => {
-      //   dispatch(question.actions.setErrorMessage({ errorMessage: err }))
-      // })
   }
 }
 
@@ -97,7 +86,6 @@ export const addAnswer = (newText, questionId, userId) => {
       body: JSON.stringify({ text: newText, questionId, userId }),
       headers: { 'Content-Type': 'application/json' },
     })
-      // .then(console.log('posted question to API...'))
       .then((res) => {
         if (res.ok) {
           return res.json()
@@ -105,17 +93,43 @@ export const addAnswer = (newText, questionId, userId) => {
         console.log(res)
         throw 'Could not post answer.'
       })
-      // .then((json) => {
-      //   console.log(json)
-      //   console.log(text)
-      //   dispatch(question.actions.setText({ text: json.text}))
-      //   console.log(json)
-      // })
-      // .catch((err) => {
-      //   dispatch(question.actions.setErrorMessage({ errorMessage: err }))
-      // })
   }
 }
+
+export const questionLike = (id) => {
+  return (dispatch) => {
+    fetch(`http://localhost:8080/question/${id}/like`, {
+      method: "POST",
+      body: "",
+      headers: { "Content-Type": "application/json" }
+    }) 
+      .then((res) => {
+      if (res.ok) {
+        console.log('one like up')
+      }
+      throw 'Could not like question.'
+    })
+  }
+}
+
+export const answerLike = (id) => {
+  return (dispatch) => {
+    fetch(`http://localhost:8080/answer/${id}/like`, {
+      method: "POST",
+      body: "",
+      headers: { "Content-Type": "application/json" }
+    }) 
+      .then((res) => {
+      if (res.ok) {
+        console.log('one like up')
+      }
+      throw 'Could not like answer.'
+    })
+  }
+}
+
+
+
 
 
 // export const questionSearch = (text ) => {
@@ -148,25 +162,3 @@ export const addAnswer = (newText, questionId, userId) => {
 //       // })
 //   }
 // }
-
-
-
-
-
-
-
-export const questionLike = (id) => {
-  return (dispatch) => {
-    fetch(`http://localhost:8080/question/${id}/like`, {
-      method: "POST",
-      body: "",
-      headers: { "Content-Type": "application/json" }
-    }) 
-      .then((res) => {
-      if (res.ok) {
-        console.log('one like up')
-      }
-      throw 'Could not post answer.'
-    })
-  }
-}
