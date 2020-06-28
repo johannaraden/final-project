@@ -22,6 +22,7 @@ export const Questions = () => {
       )
       .then((data) => {
         setData(data)
+        localStorage.setItem('questions', data)
       })
   }, [])
 
@@ -31,6 +32,10 @@ export const Questions = () => {
     event.preventDefault()
     dispatch(question.actions.setTitle({ title: item.title }))
     setDetails('')
+  }
+
+  const handleChange = () => {
+
   }
     
   return (

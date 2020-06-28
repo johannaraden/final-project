@@ -43,6 +43,10 @@ const HomeSearch = styled.input`
 
 export const MainSearch = () => {
   
+  
+
+
+
   return (
       <HomeForm>
         <HomeSearch placeholder='search question' type='search'>

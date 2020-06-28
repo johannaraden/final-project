@@ -129,3 +129,25 @@
   color: #4f4f4f;
 }
 
+.modal {
+  position: absolute;
+  background-color: palegoldenrod;
+  color: white;
+  width: 100%;
+}
+
+.modal form {
+  color: white;
+}
+
+.modal input {
+  border: none;
+  color: white;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+}
+
+.Overlay {
+  width: 100%;
+  background-color: grey;
+}

@@ -60,9 +60,9 @@ export const QuestionDetails = (props) => {
     fetch(`http://localhost:8080/question/${id}/answers`)
       .then((res) => {
         if (res.ok) {
+          console.log(id)
           return res.json()
         }
-        console.log(id)
         throw 'Could not find answers.'
       })
       .then((data) => {
@@ -122,21 +122,28 @@ export const QuestionDetails = (props) => {
           )}
           <div className='answers-div'>
             <h2 className='answer-headline'>Answers</h2>
-            {question.answer && question.answer.length === 0 &&
+            {answer && answer.length === 0 &&
               <div className='no-activity'>
                 <h4>There are no answers yet!</h4>
                 <p>Press "Add Answer" to help</p>
               </div>
             }
             {console.log({ answers: question })}
-            {question.answer.map((item) => {
-              return (
-                <AnswerCard key={item._id} id={item._id} userId={item.userId} text={item.text} likes={item.likes} time={item.createdAt} />
-              )
-            })}
+            {answer && (
+              <>
+                {answer.map((item) => {
+                  return (
+                  <AnswerCard key={item._id} id={item._id} userId={item.userId} text={item.text} likes={item.likes} time={item.createdAt} />
+                  ) 
+                })}
+              {console.log(answer)}
+              </>
+              ) 
+            }
           </div>
         </div>
       )}
+         
     </section>
   )
 }

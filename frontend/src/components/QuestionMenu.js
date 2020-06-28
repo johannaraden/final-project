@@ -4,11 +4,14 @@ import { useDispatch } from 'react-redux'
 import { FilterButton, AskButton } from '../lib/button'
 import '../styles/Questions.css'
 import { SearchField } from 'lib/search-field'
+import { question } from '../reducers/question'
 import { AddQuestion } from './AddQuestion'
+
 
 
 export const QuestionMenu = () => {
   const history = useHistory()
+  const dispatch = useDispatch()
   const [showQuestionForm, setShowQuestionForm] = useState(false)
   const [search, setSearch] = useState('')
 
@@ -28,6 +31,8 @@ export const QuestionMenu = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     console.log(search)
+    let savedSearch = localStorage.getItem('questions')
+    dispatch(question.actions.setSearchText({ searchText: search }))
     setSearch('')
   }
 
@@ -47,6 +52,7 @@ export const QuestionMenu = () => {
         </select>
       </form> 
       <form onSubmit={handleSubmit}>
+        {/* Search field for filtering questions based on query */}
         <input className='main-search' type='search' placeholder='search question' value={search}
           onChange={(event) => setSearch(event.target.value)}/>
       </form>

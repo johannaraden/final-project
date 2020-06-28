@@ -86,13 +86,20 @@ export const addAnswer = (newText, questionId, userId) => {
       body: JSON.stringify({ text: newText, questionId, userId }),
       headers: { 'Content-Type': 'application/json' },
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        }
-        console.log(res)
-        throw 'Could not post answer.'
-      })
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      }
+      console.log(res)
+      throw 'Could not post answer.'
+    })
+    .then((json) => {
+      console.log(json)
+      console.log(question)
+      dispatch(question.actions.setAnswer({ text: json.text}))
+      dispatch(question.actions.setQuestionId({ questionId: json.questionId }))
+      console.log(json)
+    })
   }
 }
 

@@ -3,26 +3,27 @@ import '../styles/AddForm.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { question } from '../reducers/question'
 import { addAnswer } from '../reducers/question'
-
+import { useHistory } from 'react-router-dom' 
 
 
 export const AddAnswer = ({questionId}) => {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
   const userId = useSelector((store) => store.user.login.userId) 
+  const history = useHistory()
   console.log(questionId)
   
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleSubmit = event => {
     console.log(text)
     dispatch(addAnswer(text, questionId, userId))
     console.log(text, questionId, userId)
     setText('')
+    // history.push(`/question/${questionId}`)
   }
 
   return (
-    <section style={{'width': 'auto', 'margin-top': '2em'}}className='form-div'>
+    <section style={{'width': 'auto', 'marginTop': '2em'}}className='form-div'>
       <form className='add-form' onSubmit={handleSubmit}>
         <section>
           <label>Your Answer</label>
