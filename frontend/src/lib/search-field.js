@@ -48,11 +48,11 @@ export const MainSearch = () => {
 
 
   return (
-      <HomeForm>
-        <HomeSearch placeholder='search question' type='search'>
-        </HomeSearch>
-        <button type='submit'>sök</button>
-      </HomeForm>
+    <HomeForm>
+      <HomeSearch placeholder='search question' type='search'>
+      </HomeSearch>
+      <button type='submit'>sök</button>
+    </HomeForm>
   )
 }
 

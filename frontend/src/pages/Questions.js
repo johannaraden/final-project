@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { QuestionSummary } from '../components/QuestionSummary'
 import { QuestionMenu } from '../components/QuestionMenu'
-import { QuestionDetails } from '../components/QuestionDetails'
 import { question } from '../reducers/question'
 
 export const Questions = () => {
@@ -26,16 +24,12 @@ export const Questions = () => {
       })
   }, [])
 
-  // using the reducer to set a question and use for conditional rendering??? 
+  // Using the reducer to set a question and use for conditional rendering??? 
 
   const chooseQuestion = (event, item) => {
     event.preventDefault()
     dispatch(question.actions.setTitle({ title: item.title }))
     setDetails('')
-  }
-
-  const handleChange = () => {
-
   }
     
   return (
@@ -47,9 +41,9 @@ export const Questions = () => {
             key={item._id} id={item._id} userId={item.userId} likes={item.likes} title={item.title} answers={item.answer} question={item.question} time={item.createdAt}
           />
         )}
-
       )}
     </section>
   )
 }
+
 export default Questions

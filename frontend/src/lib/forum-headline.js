@@ -3,12 +3,12 @@ import styled from 'styled-components/macro'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
- const ForumHeadline = styled.h4`
+const ForumHeadline = styled.h4`
   color: white;
   font-size: 1.8em;
   padding-left: 1em; 
   cursor: pointer;
-  `
+`
 
 export const Headline = () => {
   const accessToken = useSelector((store) => store.user.login.accessToken);
@@ -16,9 +16,9 @@ export const Headline = () => {
 
 // Conditional that sets if person is logged in - then send to home page - if not logged in - then send to '/'
   const homeClick = (event) => {
-      if(accessToken) {
-        history.push('/home')
-      } else {
+    if(accessToken) {
+      history.push('/home')
+    } else {
         history.push('/')
       }
   }

@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import '../styles/AddForm.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { question } from '../reducers/question'
+import '../styles/AddForm.css'
 import { addQuestion } from '../reducers/question'
 
-
 export const AddQuestion = () => {
+  
   const dispatch = useDispatch()
   const [title, setTitle] = useState('')
   const [question, setQuestion] = useState('')
@@ -21,7 +20,7 @@ export const AddQuestion = () => {
   return (
     <section className='form-div'>
       <form className='add-form' onSubmit={handleSubmit}>
-      <section>
+        <section>
           <label>Title</label>
             <input
               className='add-title'
@@ -44,11 +43,11 @@ export const AddQuestion = () => {
           type='submit'
           value='ask question'
           ></input>
-    </form> 
-    <div className='instruction-div'>
-      <h3 className='add-instruction-headline'>Write your question here! </h3>
-      <p className='add-instruction-p'>Include links to your own blog, social media etc.</p>
-    </div>
-   </section>
+      </form> 
+      <div className='instruction-div'>
+        <h3 className='add-instruction-headline'>Write your question here! </h3>
+        <p className='add-instruction-p'>Include links to your own blog, social media etc.</p>
+      </div>
+    </section>
   )
 }

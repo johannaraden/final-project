@@ -47,7 +47,7 @@ export const Input = styled.input`
   margin-top: 1em;
   border: 1px solid #ccc;
   background-color: #fff;
-`;
+`
 
 export const ProfileInfo = styled.div`
   width: 60%;

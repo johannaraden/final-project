@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { user, logout } from '../reducers/user'
-import { Headline } from '../lib/headline'
-import { InputButton, ProfileImg } from '../lib/button'
-import { ProfileMessage, ProfileDiv, ProfileInfo } from '../lib/form'
 import { useDispatch, useSelector } from 'react-redux'
-import { QuestionDetails } from '../components/QuestionDetails'
-import { Link } from 'react-router-dom'
 import 'react-web-tabs/dist/react-web-tabs.css'
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs'
+import { Headline } from '../lib/headline'
+import { ProfileImg } from '../lib/button'
+import { ProfileMessage, ProfileDiv, ProfileInfo } from '../lib/form'
 import '../styles/Profile.css'
 import { QuestionSummary } from 'components/QuestionSummary'
 import { question } from '../reducers/question'
@@ -15,7 +12,6 @@ import { question } from '../reducers/question'
 
 export const Profile = () => {
   const dispatch = useDispatch()
-  const secretMessage = useSelector((store) => store.user.login.secretMessage)
   const userName = useSelector((store) => store.user.login.userName)
   const userId = useSelector((store) => store.user.login.userId)
   const [data, setData] = useState([])
@@ -23,12 +19,12 @@ export const Profile = () => {
 
   useEffect(() => {
     fetch(`http://localhost:8080/profile/${userId}/questions`)
-    .then(res => 
-      res.json()
-    )
-    .then((data) => {
-      setData(data)
-    })
+      .then(res => 
+        res.json()
+      )
+      .then((data) => {
+        setData(data)
+      })
   }, [])
 
   const chooseQuestion = (event, item) => {
@@ -39,48 +35,48 @@ export const Profile = () => {
     setDetails('')
   }
 
-  let userStatus = data.length > 10 ? "proper influencer" : data.length > 5 ? "getting there" : "beginner"
-  let userStars = data.length > 10 ? "⭐⭐⭐" : data.length > 5 ? "⭐⭐" : "⭐"
+  let userStatus = data.length > 10 ? 'proper influencer' : data.length > 5 ? 'getting there' : 'beginner'
+  let userStars = data.length > 10 ? '⭐⭐⭐' : data.length > 5 ? '⭐⭐' : '⭐'
 
   return (
     <div>
-    <ProfileInfo>
-      <Headline title='profile' />
-      <ProfileDiv>
-      <div className='tabs-profile-collection'>
-          <Tabs defaultTab='vertical-tab-one' vertical>
-          <TabList>
-            <Tab tabFor='vertical-tab-one' className='tab'>Profile</Tab>
-            <Tab tabFor='vertical-tab-two' className='tab'>Questions</Tab>
-          </TabList>
-          <TabPanel tabId='vertical-tab-one'>
-            <div className='profile-info'>
-              <ProfileImg src='https://www.fillmurray.com/200/300' alt='profile picture' />
-              <div className='profile-details'>
-                <ProfileMessage>{userName}</ProfileMessage>
-                <span className='user-stars'>{userStars}</span>
-                <div className='user-activity'>
-                  <p>Number of posted questions: <strong>{data.length}</strong></p>                
-                  <p>User status: <strong>{userStatus}</strong></p>
+      <ProfileInfo>
+        <Headline title='profile' />
+        <ProfileDiv>
+          <div className='tabs-profile-collection'>
+            <Tabs defaultTab='vertical-tab-one' vertical>
+              <TabList>
+                <Tab tabFor='vertical-tab-one' className='tab'>Profile</Tab>
+                <Tab tabFor='vertical-tab-two' className='tab'>Questions</Tab>
+              </TabList>
+              <TabPanel tabId='vertical-tab-one'>
+                <div className='profile-info'>
+                  <ProfileImg src='https://www.fillmurray.com/200/300' alt='profile picture' />
+                  <div className='profile-details'>
+                    <ProfileMessage>{userName}</ProfileMessage>
+                    <span className='user-stars'>{userStars}</span>
+                    <div className='user-activity'>
+                      <p>Number of posted questions: <strong>{data.length}</strong></p>                
+                      <p>User status: <strong>{userStatus}</strong></p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </TabPanel>
-          <TabPanel tabId='vertical-tab-two'>
-            {/* Fetch and print out the questions for this user */}
-            <h4>Your questions</h4>
-            {data.map((item) => {
-              return (
-                <QuestionSummary onClick={event => chooseQuestion(event, item)}
-                key={item._id} id={item._id} userId={item.userId} likes={item.likes} title={item.title} answers={item.answer} question={item.question} time={item.createdAt}
-                />
-                )}  
-            )}
-          </TabPanel>
-        </Tabs>
-      </div>
-      </ProfileDiv>
-    </ProfileInfo>
+              </TabPanel>
+              <TabPanel tabId='vertical-tab-two'>
+                {/* Fetch and print out the questions for this user */}
+                <h4>Your questions</h4>
+                {data.map((item) => {
+                  return (
+                    <QuestionSummary onClick={event => chooseQuestion(event, item)}
+                      key={item._id} id={item._id} userId={item.userId} likes={item.likes} title={item.title} answers={item.answer} question={item.question} time={item.createdAt}
+                    />
+                  )}  
+                )}
+              </TabPanel>
+            </Tabs>
+          </div>
+        </ProfileDiv>
+      </ProfileInfo>
     </div>
   )
 }

@@ -1,20 +1,16 @@
 import React, { useState } from 'react'
-import '../styles/AddForm.css'
 import { useDispatch, useSelector } from 'react-redux'
+import '../styles/AddForm.css'
 import { question } from '../reducers/question'
 import { addAnswer } from '../reducers/question'
-import { useHistory } from 'react-router-dom' 
-
 
 export const AddAnswer = ({questionId}) => {
   const dispatch = useDispatch()
   const [text, setText] = useState('')
   const userId = useSelector((store) => store.user.login.userId) 
-  const history = useHistory()
   console.log(questionId)
-  
 
-  const handleSubmit = event => {
+  const handleSubmit = () => {
     console.log(text)
     dispatch(addAnswer(text, questionId, userId))
     console.log(text, questionId, userId)
@@ -35,14 +31,14 @@ export const AddAnswer = ({questionId}) => {
             ></textarea>
         </section>
           <input
-          className='add-submit'
-          type='submit'
-          value='add answer'
+            className='add-submit'
+            type='submit'
+            value='add answer'
           ></input>
-    </form> 
-    <div className='instruction-div'>
-      <h3 className='add-instruction-headline'>Write your answer here! </h3>
-    </div>
-   </section>
+      </form> 
+      <div className='instruction-div'>
+        <h3 className='add-instruction-headline'>Write your answer here! </h3>
+      </div>
+    </section>
   )
 }

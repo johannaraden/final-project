@@ -1,6 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
-import {reactLocalStorage} from 'reactjs-localstorage'
-
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   login: {
@@ -40,66 +38,64 @@ export const user = createSlice({
   },
 })
 
-//
-//Thunks
+
+/////////Thunks//////////////
+
 export const signup = (name, email, password) => {
   const SIGNUP_URL = 'http://localhost:8080/users'
-  return (dispatch) => {
-    console.log('Trying to sign up ...')
-    fetch(SIGNUP_URL, {
-      method: 'POST',
-      body: JSON.stringify({ name, email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then(console.log('posted registration info to API...'))
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        }
-        throw 'Could not creat account. Try a different username.'
+    return (dispatch) => {
+      console.log('Trying to sign up ...')
+      fetch(SIGNUP_URL, {
+        method: 'POST',
+        body: JSON.stringify({ name, email, password }),
+        headers: { 'Content-Type': 'application/json' },
       })
-      .then((json) => {
-        console.log(json)
-        dispatch(user.actions.setLoginResponse({ accessToken: json.accessToken, userId: json.userId }))
-        dispatch(user.actions.setUserName({ userName: json.name }))
-        dispatch(user.actions.setErrorMessage({ errorMessage: null }))
-      })
-      .catch((err) => {
-        dispatch(user.actions.setErrorMessage({ errorMessage: err }))
-      })
-  }
+        .then(console.log('posted registration info to API...'))
+        .then((res) => {
+          if (res.ok) {
+            return res.json()
+          }
+          throw 'Could not creat account. Try a different username.'
+        })
+        .then((json) => {
+          console.log(json)
+          dispatch(user.actions.setLoginResponse({ accessToken: json.accessToken, userId: json.userId }))
+          dispatch(user.actions.setUserName({ userName: json.name }))
+          dispatch(user.actions.setErrorMessage({ errorMessage: null }))
+        })
+        .catch((err) => {
+          dispatch(user.actions.setErrorMessage({ errorMessage: err }))
+        })
+    }
 }
 
 export const login = (name, password) => {
   const LOGIN_URL = 'http://localhost:8080/sessions'
-  return (dispatch) => {
-    fetch(LOGIN_URL, {
-      method: 'POST',
-      body: JSON.stringify({ name, password }),
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then(console.log('Logging in...'))
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        }
-        throw 'Unable to log in. Please check your username and password'
+    return (dispatch) => {
+      fetch(LOGIN_URL, {
+        method: 'POST',
+        body: JSON.stringify({ name, password }),
+        headers: { 'Content-Type': 'application/json' },
       })
-      .then((json) => {
-        console.log(json)
-        // Save the login info 
-        dispatch(user.actions.setLoginResponse({ accessToken: json.accessToken, userId: json.userId }))
-        dispatch(user.actions.setUserName({ userName: json.name }))
-        dispatch(user.actions.setErrorMessage({ errorMessage: null }))
-        // localStorage.setItem('id', json.accessToken)
-        // reactLocalStorage.clear()
-        localStorage.clear()
-      })
-      .catch((err) => {
-        dispatch(user.actions.setErrorMessage({ errorMessage: err }))
-        dispatch(logout())
-      })
-  }
+        .then(console.log('Logging in...'))
+        .then((res) => {
+          if (res.ok) {
+            return res.json()
+          }
+          throw 'Unable to log in. Please check your username and password'
+        })
+        .then((json) => {
+          console.log(json)
+          // Save the login info 
+          dispatch(user.actions.setLoginResponse({ accessToken: json.accessToken, userId: json.userId }))
+          dispatch(user.actions.setUserName({ userName: json.name }))
+          dispatch(user.actions.setErrorMessage({ errorMessage: null }))
+        })
+        .catch((err) => {
+          dispatch(user.actions.setErrorMessage({ errorMessage: err }))
+          dispatch(logout())
+        })
+    }
 }
 
 export const logout = () => {
@@ -108,6 +104,6 @@ export const logout = () => {
     dispatch(user.actions.setLoginResponse({ accessToken: null, userId: 0 }))
     dispatch(user.actions.setSecretMessage({ secretMessage: null }))
     dispatch(user.actions.setUserName({ userName: null }))
-    localStorage.clear() 
+    window.localStorage.clear()
   }
 }

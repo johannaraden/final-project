@@ -9,12 +9,12 @@ export const GoBack = styled.img`
     &:hover {
       background: palevioletred;
       color: white;
-   } 
+    } 
 `
 
 export const BackArrow = () => {
   return (
-    <GoBack className='back-arrow' src={Svg} alt="back-arrow">
+    <GoBack className='back-arrow' src={Svg} alt='back-arrow'>
     </GoBack>
   )
 }

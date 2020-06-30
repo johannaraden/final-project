@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {reactLocalStorage} from 'reactjs-localstorage'
+import { useHistory, Link } from 'react-router-dom'
 import { user, login } from '../reducers/user'
 import { Headline } from '../lib/headline'
 import { Button } from '../lib/button'
 import { Form, InfoDiv, Input, Register, ProfileMessage } from '../lib/form'
-import { useHistory, Link } from 'react-router-dom'
 
 export const LogIn = () => {
   const dispatch = useDispatch()
@@ -20,10 +19,6 @@ export const LogIn = () => {
     if (accessToken) {
       history.push('/home')
       console.log('push successful')
-      //localStorage is not working
-      // reactLocalStorage.set('var', true)
-      localStorage.setItem('id', accessToken)
-      // localStorage.id = user.accessToken
     }
   })
   // clean up the error message from previous page
@@ -61,7 +56,7 @@ export const LogIn = () => {
             />
             {errorMessage && <ProfileMessage>{`${errorMessage}`}</ProfileMessage>}
             <Button type='submit' title='Log in' />
-            <Register>Not a member?<Link to="/signup">Sign up</Link></Register>
+            <Register>Not a member?<Link to='/signup'>Sign up</Link></Register>
           </InfoDiv>
         </Form>
       </div>

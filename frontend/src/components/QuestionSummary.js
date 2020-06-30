@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom' 
-import { useDispatch } from 'react-redux'
 import moment from 'moment'
 import { ButtonInput } from '../lib/button'
 import '../styles/Questions.css'
@@ -8,8 +7,7 @@ import '../styles/Questions.css'
 
 
 export const QuestionSummary = (props) => {
-  const {id, likes, time, answers, question, title} = props
-  const dispatch = useDispatch()
+  const { id, likes, time, question, title } = props
 
   return (
     <div className='question-summary'>

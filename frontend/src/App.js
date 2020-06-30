@@ -1,15 +1,15 @@
 import React from 'react'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Header } from './components/Header'
 import SignUp from './pages/SignUp'
 import LogIn from './pages/LogIn'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Questions from './pages/Questions'
-import { Provider } from "react-redux"
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
 import { user } from './reducers/user'
 import { question } from './reducers/question'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import QuestionDetails from 'components/QuestionDetails'
 
 const saveToLocalStorage = (state) => {
