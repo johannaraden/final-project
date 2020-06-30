@@ -22,7 +22,7 @@ export const QuestionDetails = (props) => {
   const { _id } = useParams()
 
   useEffect(() => {
-    fetch(`http://localhost:8080/question/${id}`)
+    fetch(`https://final-pr.herokuapp.com/question/${id}`)
       .then((res) => {
         if (res.ok) {
           return res.json()
@@ -39,7 +39,7 @@ export const QuestionDetails = (props) => {
 
   useEffect(() => {
     if(question && question.userId) {
-      fetch(`http://localhost:8080/user/${question.userId}`)
+      fetch(`https://final-pr.herokuapp.com/user/${question.userId}`)
         .then((res) => {
           if (res.ok) {
             return res.json()
@@ -54,7 +54,7 @@ export const QuestionDetails = (props) => {
   }, [question])
 
   useEffect(() => {
-    fetch(`http://localhost:8080/question/${id}/answers`)
+    fetch(`https://final-pr.herokuapp.com/question/${id}/answers`)
       .then((res) => {
         if (res.ok) {
           console.log(id)

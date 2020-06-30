@@ -5,25 +5,14 @@ import '../styles/Header.css'
 import { HeaderThumbnail } from './HeaderThumbnail'
 import { Headline } from '../lib/forum-headline'
 import Svg from '../lib/next.svg'
-import { SearchOverlay } from '../components/SearchOverlay'
+import { SearchBar } from './SearchBar'
 
 export const Header = () => {
   const accessToken = useSelector((store) => store.user.login.accessToken)
-  const [isOpen, setIsOpen] = useState(false)
-
-  const handleOnClick = () => {
-    setIsOpen(!isOpen)
-  }
 
   return (
     <section className='header-menu'>
-      <div className='expandable-search'>
-        <button className='search-button' onClick={handleOnClick}>
-          <span>search❔</span>
-        </button>        
-      {isOpen && 
-        <SearchOverlay></SearchOverlay>}
-      </div>
+      <SearchBar />
       <div className='home-div'>
         <Headline />
       </div>

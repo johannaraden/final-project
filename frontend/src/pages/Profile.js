@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import 'react-web-tabs/dist/react-web-tabs.css'
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs'
 import { Headline } from '../lib/headline'
-import { ProfileImg } from '../lib/button'
-import { ProfileMessage, ProfileDiv, ProfileInfo } from '../lib/form'
+import { ProfileMessage, ProfileImg, ProfileDiv, ProfileInfo } from '../lib/form'
 import '../styles/Profile.css'
 import { QuestionSummary } from 'components/QuestionSummary'
 import { question } from '../reducers/question'
@@ -18,7 +17,7 @@ export const Profile = () => {
   const [details, setDetails] = useState('')
 
   useEffect(() => {
-    fetch(`http://localhost:8080/profile/${userId}/questions`)
+    fetch(`https://final-pr.herokuapp.com/profile/${userId}/questions`)
       .then(res => 
         res.json()
       )

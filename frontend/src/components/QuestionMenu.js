@@ -22,7 +22,7 @@ export const QuestionMenu = () => {
   return (
     <>
     <div className='questions-menu'>
-      <FilterButton onClick={sortByLikes}>Most popular</FilterButton>
+      {/* <FilterButton onClick={sortByLikes}>Most popular</FilterButton>
       <FilterButton>Unanswered</FilterButton>
       <form className='questions-options'>
         <select name='question-sorting' defaultValue=' ' className='question-sorting'>
@@ -32,7 +32,7 @@ export const QuestionMenu = () => {
           <option value='most-answers'>Most answers</option>
           <option value='least-answers'>Least answers</option>
         </select>
-      </form> 
+      </form>  */}
       <AskButton type='button' onClick={newQuestion}>
           Ask!
       </AskButton>   

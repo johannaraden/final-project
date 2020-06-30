@@ -42,7 +42,7 @@ export const user = createSlice({
 /////////Thunks//////////////
 
 export const signup = (name, email, password) => {
-  const SIGNUP_URL = 'http://localhost:8080/users'
+  const SIGNUP_URL = 'https://final-pr.herokuapp.com/users'
     return (dispatch) => {
       console.log('Trying to sign up ...')
       fetch(SIGNUP_URL, {
@@ -70,7 +70,7 @@ export const signup = (name, email, password) => {
 }
 
 export const login = (name, password) => {
-  const LOGIN_URL = 'http://localhost:8080/sessions'
+  const LOGIN_URL = 'https://final-pr.herokuapp.com/sessions'
     return (dispatch) => {
       fetch(LOGIN_URL, {
         method: 'POST',

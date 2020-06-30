@@ -12,7 +12,7 @@ export const AnswerCard = (props) => {
 
   useEffect(() => {
     if(userId && userId) {
-      fetch(`http://localhost:8080/user/${userId}`)
+      fetch(`https://final-pr.herokuapp.com/user/${userId}`)
         .then((res) => {
           if (res.ok) {
             return res.json()

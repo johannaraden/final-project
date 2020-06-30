@@ -16,7 +16,7 @@ export const Home = () => {
   const [myAnswers, setMyAnswers] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:8080/latest/${userId}/questions`)
+    fetch(`https://final-pr.herokuapp.com/latest/${userId}/questions`)
       .then(res => 
         res.json()
       )
@@ -26,7 +26,7 @@ export const Home = () => {
   }, [])
 
   useEffect(() => {
-    fetch(`http://localhost:8080/latest/${userId}/answers`)
+    fetch(`https://final-pr.herokuapp.com/latest/${userId}/answers`)
       .then(res => 
         res.json()
       )

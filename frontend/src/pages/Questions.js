@@ -14,7 +14,7 @@ export const Questions = () => {
   const [details, setDetails] = useState('')
 
   useEffect(() => {
-    fetch(local)
+    fetch(newAPI)
       .then(res => 
         res.json()
       )

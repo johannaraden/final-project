@@ -191,3 +191,34 @@
 .lots, .few, .none:hover {
   cursor: pointer;
 }
+
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 500px) {
+  .back {
+    width: 30%;
+  }
+  .answer-headline {
+    padding: 0;
+  }
+  .question-details-page {
+    padding: 1em;
+  }
+  .form-div {
+    padding: 5em;
+  }
+  .heart {
+    transform: scale(0.8);
+  }
+  .lots, .few, .none {
+    padding: 1.2em .1em;
+  }
+  .like-p {
+    font-size: .8em;
+  }
+  .answer-likes > * {
+    text-align: center;
+  }
+}

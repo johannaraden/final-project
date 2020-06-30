@@ -39,7 +39,14 @@
   background-color: white;
 }
 
+/* MEDIA QUERIES */
 
-#vertical-tab-one {
-  margin: auto;
+@media only screen and (max-width: 500px) {
+ #vertical-tab-one {
+   margin: 0;
+ }
+ .profile-info {
+   margin: 0;
+   flex-direction: column;
+ }
 }

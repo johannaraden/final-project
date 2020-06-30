@@ -8,6 +8,7 @@ const ForumHeadline = styled.h4`
   font-size: 1.8em;
   padding-left: 1em; 
   cursor: pointer;
+  margin-top: 0;
 `
 
 export const Headline = () => {

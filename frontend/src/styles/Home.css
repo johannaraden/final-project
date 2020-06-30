@@ -53,3 +53,28 @@
 .home-tab {
   margin: auto;
 }
+
+
+/* MEDIA QUERIES */
+
+
+@media only screen and (max-width: 500px) {
+  .home-page {
+    width: 90%;
+  }
+  .tabs-home-collection {
+    width: 90%;
+    margin: 0;
+  }
+  .home-div {
+    width: 100%;
+  }
+  .tab {
+    margin: 0;
+    padding: 1em;
+  }
+  .no-activity {
+    padding: 1em;
+    width: 100%;
+  }
+}

@@ -50,7 +50,7 @@ export const question = createSlice({
 ////////Thunks//////////
 
 export const addQuestion = (title, newQuestion, userId) => {
-  const POST_URL = 'http://localhost:8080/questions'
+  const POST_URL = 'https://final-pr.herokuapp.com/questions'
     return (dispatch) => {
       console.log('Posting a question ...')
       console.log(userId)
@@ -78,7 +78,7 @@ export const addQuestion = (title, newQuestion, userId) => {
 
 
 export const addAnswer = (newText, questionId, userId) => {
-  const POST_URL = `http://localhost:8080/question/${questionId}/answers`
+  const POST_URL = `https://final-pr.herokuapp.com/question/${questionId}/answers`
     return (dispatch) => {
       console.log('Posting an answer ...')
       console.log(userId)
@@ -107,7 +107,7 @@ export const addAnswer = (newText, questionId, userId) => {
 
 export const questionLike = (id) => {
   return (dispatch) => {
-    fetch(`http://localhost:8080/question/${id}/like`, {
+    fetch(`https://final-pr.herokuapp.com/question/${id}/like`, {
       method: 'POST',
       body: '',
       headers: { 'Content-Type': 'application/json' }
@@ -123,7 +123,7 @@ export const questionLike = (id) => {
 
 export const answerLike = (id) => {
   return (dispatch) => {
-    fetch(`http://localhost:8080/answer/${id}/like`, {
+    fetch(`https://final-pr.herokuapp.com/answer/${id}/like`, {
       method: 'POST',
       body: '',
       headers: { 'Content-Type': 'application/json' }
@@ -138,7 +138,7 @@ export const answerLike = (id) => {
 }
 
 export const questionSearch = (searchText) => {
-  const GET_SEARCH = `http://localhost:8080/questions/?query=${searchText}`
+  const GET_SEARCH = `https://final-pr.herokuapp.com/questions/?query=${searchText}`
     console.log('we made it to reducer!!', searchText)
     return (dispatch) => {
       // const userId = getState().user.login.userId
@@ -149,13 +149,6 @@ export const questionSearch = (searchText) => {
         .then(res => 
           res.json()
         )
-        // .then((res) => {
-        //   if (res.ok) {
-        //     return res.json()
-        //   }
-        //   console.log(res)
-        //   throw 'Could not find questions. why'
-        // })
         .then((json) => {
           console.log(json)
           console.log(searchText)

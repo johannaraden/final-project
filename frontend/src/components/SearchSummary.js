@@ -4,8 +4,6 @@ import moment from 'moment'
 import { ButtonInput } from '../lib/button'
 import '../styles/Questions.css'
 
-
-
 export const SearchSummary = (props) => {
   const { id, likes, time, question, title } = props
 
@@ -21,6 +19,7 @@ export const SearchSummary = (props) => {
         <div className='search-summary-body'>
           <p className='search-summary-text' key={props.id}>{props.question}</p>        
         </div>
+        <button className='search-read-more'>Read more</button>
       </Link>
     </div>
   )

@@ -23,6 +23,7 @@ export const SignUp = () => {
       console.log('push successful')
     }
   })
+  
   useEffect(() => {
     dispatch(user.actions.setErrorMessage({ errorMessage: null }))
   })

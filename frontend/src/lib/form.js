@@ -35,12 +35,18 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   border-radius: 6px 6px;
+  @media (max-width: 500px) {
+    width: 80%;
+  }
 `
 export const InfoDiv = styled.div`
   margin: 2em auto;
   display: flex;
   flex-direction: column;
   width: 40%;
+  @media (max-width: 500px) {
+    width: 70%;
+  }
 `
 export const Input = styled.input`
   height: 2.5em;
@@ -72,6 +78,9 @@ export const ProfileInfo = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 6px 6px;
+  @media (max-width: 500px) {
+    width: 90%;
+  }
 `
 
 export const ProfileDiv = styled.div`
@@ -81,6 +90,16 @@ export const ProfileDiv = styled.div`
   justify-content: center;
   align-items: center;
   width: 90%;
+  @media (max-width: 500px) {
+    margin: 0;
+  }
+`
+export const ProfileImg = styled.img`
+  border-radius: 6px;
+  @media (max-width: 500px) {
+    transform: scale(.7);
+    margin-top: -1em;
+  }
 `
 
 export const Summary = styled(QuestionSummary).attrs({
