@@ -28,7 +28,7 @@
 }
 
 .add-submit {
-  width: 30%;
+  width: 50%;
   padding: .5em 1em;
   cursor: pointer;
 
@@ -43,4 +43,28 @@
 
 .instruction-div {
   width: 40%;
+}
+
+
+@media only screen and (max-width: 500px) {
+
+  .add-submit {
+    width: 100%;
+  }
+  .add-form {
+    font-size: .8em;
+  }
+  .add-title {
+    width: 100%;
+  }
+  .instruction-div {
+    font-size: .8em;
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .add-submit {
+    width: auto;
+  }
 }

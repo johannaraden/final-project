@@ -57,11 +57,13 @@
   margin-right: 5%;
 }
 
-
 .summary-text {
   margin: auto 5%;
 }
 
+.horisontal-line {
+  margin: .5em 0;
+}
 
 /* Question menu */
 
@@ -193,7 +195,6 @@
 }
 
 
-
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 500px) {
@@ -220,5 +221,41 @@
   }
   .answer-likes > * {
     text-align: center;
+  }
+  .question-summary {
+    width: 100%;
+    margin: 1em 0;
+    padding: 0;
+    font-size: 0.7em;
+  }
+  .summary-header {
+    height: 6em;
+    padding: .4em 0;
+  }
+  .summary-item {
+    font-size: 1em;
+  }
+  .summary-item .like-p {
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .summary-item {
+    font-size: 1.3em;
+    margin: .2em;
+  }
+  .summary-header {
+    height: 6em;
+    padding: .4em 0;
+  }
+  .heart {
+    transform: scale(0.8);
+  }
+  .lots, .few, .none {
+    padding: 1.2em .1em;
+  }
+  .like-p {
+    font-size: .8em;
   }
 }

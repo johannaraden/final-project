@@ -8,6 +8,13 @@
   border-radius: 6px;
   padding: .5em;
   margin-bottom: 1em;
+  color: black;
+}
+
+.answer-card:hover {
+  -webkit-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+  -moz-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+  box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
 }
 
 .answer-likes {
@@ -26,8 +33,6 @@
   cursor: pointer;
 }
 
-
-
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 500px) {
@@ -35,10 +40,26 @@
   .form-div {
     padding: 1em;
   }
+  .answer-card {
+    border: 1px solid lightgray;
+    width: 100%;
+  }
   .add-submit {
     width: 100%;
   }
-  .heart {
-    transform: scale(40%);
+  .no-activity {
+    width: auto;
   }
 }
+
+@media only screen and (max-width: 770px) {
+
+  .answer-card {
+    width: 100%;
+  }
+  .no-activity {
+    width: auto;
+    padding: .8em;
+  }
+}
+

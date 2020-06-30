@@ -5,6 +5,7 @@ import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs'
 import { Headline } from '../lib/headline'
 import { ProfileMessage, ProfileImg, ProfileDiv, ProfileInfo } from '../lib/form'
 import '../styles/Profile.css'
+import '../styles/Home.css'
 import { QuestionSummary } from 'components/QuestionSummary'
 import { question } from '../reducers/question'
 

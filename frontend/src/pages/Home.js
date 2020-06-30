@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 import { user } from '../reducers/user'
 import '../styles/Home.css'
 import '../styles/Questions.css'
-import { QuestionSummary } from 'components/QuestionSummary'
+import { SearchSummary } from 'components/SearchSummary'
+import { AnswerCard } from 'components/AnswerCard'
 
 export const Home = () => {
 
@@ -58,7 +59,7 @@ export const Home = () => {
           {myQuestions.map((item) => {
             return (
               <Link to='/profile'>
-              <QuestionSummary style={{'width': '100%'}}
+              <SearchSummary
                 key={item._id} id={item._id} userId={item.userId} title={item.title} likes={item.likes} answers={item.answer} question={item.question}
               />
               </Link>
@@ -75,8 +76,8 @@ export const Home = () => {
           {myAnswers.map((item) => {
             return (
               <Link to='/profile'>
-              <QuestionSummary
-                key={item._id} id={item._id} userId={item.userId} likes={item.likes} title={item.title} question={item.questionId}  time={item.createdAt}
+              <AnswerCard
+                key={item._id} id={item._id} userId={item.userId} likes={item.likes} title={item.title} text={item.text}  time={item.createdAt}
               />
               </Link>
             )

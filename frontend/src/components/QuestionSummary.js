@@ -22,7 +22,7 @@ export const QuestionSummary = (props) => {
             <p className='summary-item like-p'>{likes}<br/> likes</p>
           </div>
         </div>
-        <hr></hr>
+        <hr className='horisontal-line'></hr>
         <div className='summary-body'>
           <p className='summary-text' key={props.id}>{props.question}</p>
           <ButtonInput>read more ➡</ButtonInput>

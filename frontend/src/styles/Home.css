@@ -50,6 +50,10 @@
   color: palevioletred;
 }
 
+.search-summary a{
+  text-decoration: none;
+}
+
 .home-tab {
   margin: auto;
 }
@@ -72,9 +76,22 @@
   .tab {
     margin: 0;
     padding: 1em;
+    font-size: .7em;
   }
   .no-activity {
     padding: 1em;
+    font-size: .7em;
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+
+  .tabs-home-collection {
+    margin: .5em;
+  }
+  .tab  {
+    margin: 0;
+    padding: 0.5em;
   }
 }

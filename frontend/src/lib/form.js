@@ -38,6 +38,9 @@ export const Form = styled.form`
   @media (max-width: 500px) {
     width: 80%;
   }
+  @media (max-width: 770px) {
+    width: 70%;
+  }
 `
 export const InfoDiv = styled.div`
   margin: 2em auto;
@@ -81,6 +84,9 @@ export const ProfileInfo = styled.div`
   @media (max-width: 500px) {
     width: 90%;
   }
+  @media (max-width: 770px) {
+    width: 90%;
+  }
 `
 
 export const ProfileDiv = styled.div`
@@ -91,6 +97,9 @@ export const ProfileDiv = styled.div`
   align-items: center;
   width: 90%;
   @media (max-width: 500px) {
+    margin: 0;
+  }
+  @media (max-width: 770px) {
     margin: 0;
   }
 `

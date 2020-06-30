@@ -16,7 +16,7 @@ export const Header = () => {
       <div className='home-div'>
         <Headline />
       </div>
-      <nav className='tab'>
+      <nav className='menu'>
         <input id='tab-one' type='checkbox' name='tabs' /> 
         <label htmlFor='tab-one'>MENU<img className='menu-arrow' src={Svg} alt='dropdown-arrow' /></label>
         <div className='tab-content'>

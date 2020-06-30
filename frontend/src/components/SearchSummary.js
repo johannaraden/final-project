@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom' 
 import moment from 'moment'
-import { ButtonInput } from '../lib/button'
-import '../styles/Questions.css'
+import '../styles/Search.css'
 
 export const SearchSummary = (props) => {
   const { id, likes, time, question, title } = props

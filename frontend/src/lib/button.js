@@ -15,6 +15,14 @@ export const ButtonInput = styled.button`
     border: 2px solid white;
     cursor: pointer;
   }
+  @media (max-width: 500px) {
+    font-size: 1em;
+    padding: .5em 1em;
+  }
+  @media (max-width: 770px) {
+    font-size: 1em;
+    padding: .5em 1em;
+  }
 `
 export const FilterButton = styled.button`
   color: #4f4f4f;
@@ -40,10 +48,6 @@ export const AskButton = styled.button`
     color: white;
     cursor: pointer;
   } 
-`
-
-export const ProfileImg = styled.img`
-  border-radius: 6px;
 `
 
 export const Button = ({ title }) => {

@@ -2,14 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
-const ForumHeadline = styled.h4`
-  color: white;
-  font-size: 1.8em;
-  padding-left: 1em; 
-  cursor: pointer;
-  margin-top: 0;
-`
+import '../styles/Header.css'
 
 export const Headline = () => {
   const accessToken = useSelector((store) => store.user.login.accessToken);
@@ -25,6 +18,6 @@ export const Headline = () => {
   }
   
   return (
-    <ForumHeadline onClick={homeClick}>[Topic] Forum🎈</ForumHeadline>
+    <h4 className='forum-headline' onClick={homeClick}>[Topic] Forum🎈</h4>
   )
 }
