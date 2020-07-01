@@ -1,5 +1,6 @@
 import React from 'react'
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { applyMiddleware, compose, configureStore, combineReducers, createStore } from '@reduxjs/toolkit'
+import thunk from 'redux-thunk'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Header } from './components/Header'
 import SignUp from './pages/SignUp'
@@ -11,6 +12,8 @@ import { Provider } from 'react-redux'
 import { user } from './reducers/user'
 import { question } from './reducers/question'
 import QuestionDetails from 'components/QuestionDetails'
+
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const saveToLocalStorage = (state) => {
   try {
@@ -40,7 +43,7 @@ const reducer = combineReducers({
   question: question.reducer
 })
 
-const store = configureStore({ reducer, persistedState })
+const store = createStore(reducer, persistedState, composeEnhancer(applyMiddleware(thunk)))
 
 store.subscribe(() => saveToLocalStorage(store.getState()))
 

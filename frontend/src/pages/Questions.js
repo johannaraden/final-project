@@ -7,7 +7,6 @@ import { question } from '../reducers/question'
 export const Questions = () => {
   const dispatch = useDispatch()
   const newAPI = 'https://final-pr.herokuapp.com/questions'
-  const deployed = 'https://mongodb-questions.herokuapp.com/questions'
   const local = 'http://localhost:8080/questions'
   const questionId = useSelector((store) => store.question.questionId);
   const [data, setData] = useState([])
@@ -35,13 +34,15 @@ export const Questions = () => {
   return (
     <section className='questions-list'>
       <QuestionMenu />
-      {data.map((item) => {
-        return (
-          <QuestionSummary onClick={event => chooseQuestion(event, item)}
-            key={item._id} id={item._id} userId={item.userId} likes={item.likes} title={item.title} answers={item.answer} question={item.question} time={item.createdAt}
-          />
+      <section className='question-result-list'>
+        {data.map((item) => {
+          return (
+            <QuestionSummary onClick={event => chooseQuestion(event, item)}
+              key={item._id} id={item._id} userId={item.userId} likes={item.likes} title={item.title} answers={item.answer} question={item.question} time={item.createdAt}
+            />
+          )}
         )}
-      )}
+      </section>
     </section>
   )
 }

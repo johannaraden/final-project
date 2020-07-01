@@ -77,7 +77,6 @@ export const login = (name, password) => {
         body: JSON.stringify({ name, password }),
         headers: { 'Content-Type': 'application/json' },
       })
-        .then(console.log('Logging in...'))
         .then((res) => {
           if (res.ok) {
             return res.json()
@@ -104,6 +103,6 @@ export const logout = () => {
     dispatch(user.actions.setLoginResponse({ accessToken: null, userId: 0 }))
     dispatch(user.actions.setSecretMessage({ secretMessage: null }))
     dispatch(user.actions.setUserName({ userName: null }))
-    window.localStorage.clear()
+    localStorage.clear()
   }
 }

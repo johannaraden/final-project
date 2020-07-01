@@ -59,7 +59,7 @@ export const Input = styled.input`
 `
 
 export const ProfileInfo = styled.div`
-  width: 60%;
+  width: 80%;
   margin: 1em auto;
   --background: white;
   --border: rgba(0, 0, 0, 0.125);

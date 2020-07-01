@@ -85,6 +85,8 @@
   background-color: white;
   margin: 1em;
   padding: .5em;
+  font-size: 1.2em;
+  width: 80%;
 }
 
 .search-summary:hover {
@@ -146,6 +148,9 @@
 @media only screen and (max-width: 770px) {
   .search-summary {
     font-size: .8em;
+    border: 1px solid #d3d3d3;
+    width: 100%;
+    padding: 0 2em;
   }
 }
 

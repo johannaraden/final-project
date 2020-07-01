@@ -3,19 +3,22 @@ import { useDispatch, useSelector } from 'react-redux'
 import '../styles/AddForm.css'
 import { question } from '../reducers/question'
 import { addAnswer } from '../reducers/question'
+import { useHistory } from 'react-router-dom'
 
 export const AddAnswer = ({questionId}) => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const [text, setText] = useState('')
   const userId = useSelector((store) => store.user.login.userId) 
   console.log(questionId)
 
   const handleSubmit = () => {
     console.log(text)
+    history.push(`question?id=${questionId}`)
+    console.log(`/?id=${questionId}`)
     dispatch(addAnswer(text, questionId, userId))
     console.log(text, questionId, userId)
     setText('')
-    // history.push(`/question/${questionId}`)
   }
 
   return (
