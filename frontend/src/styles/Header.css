@@ -1,0 +1,139 @@
+/* Header */
+
+.home-div {
+  background-color: #72d2c6;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1em;
+}
+
+.forum-headline {
+  color: white;
+  font-size: 1.8em;
+  padding-left: 1em; 
+  cursor: pointer;
+  margin-top: 0;
+}
+ 
+/* TAB MENU */
+
+.menu {
+  position: relative;
+  width: 100%;
+  background-color: #72d2c6;
+}
+
+.menu input { 	
+	position: absolute;	
+  left: 0;	
+	top: 0;	
+	z-index: -10;	
+}
+
+.menu label {
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  line-height: 3;
+  padding: 1em 0em 1em 3em;
+}
+
+.menu input:focus + label ,
+.menu label:hover  {
+  background-color: #85D8CE;
+  cursor: pointer;
+}
+
+
+
+.menu label:hover {
+  cursor: pointer;
+}
+
+.tab-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all .55s;
+  background: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.link {
+  margin: .7em;
+}
+
+.tab-content > * {
+  text-decoration: none;
+  color: black;
+}
+
+.tab-content > *:hover {
+  text-decoration: underline;
+}
+
+.menu input:checked ~ label {
+  background-color: palegoldenrod;
+  
+}
+
+
+.menu input:checked ~ label .menu-arrow {
+  transform: rotate(90deg);
+  transition: ease-in-out .3s;
+}
+
+.menu input:unchecked ~ label .menu-arrow {
+  transform: rotate(-90deg);
+  transition: ease-in-out .3s;
+}
+
+.menu input:checked ~ .tab-content {
+  max-height: 30em;
+  padding: 1em 0;
+}
+
+.menu input:unchecked ~ .tab-content {
+  max-height: 0;
+  margin-bottom: 0;
+}
+
+
+/* Header arrow */
+
+.menu-arrow {
+  width: .9em;
+  margin-left: .4em;
+  filter: invert(1)
+}
+
+/* Header thumbnail */
+
+.thumbnail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 0em;
+  margin-bottom: 1em;
+}
+
+.thumbnail > * {
+  align-self: center;
+}
+
+.thumbnail a {
+  text-decoration: none;
+}
+
+.thumbnail img {
+  border-radius: 200px;
+}
+
+@media only screen and (max-width: 500px) {
+
+  .forum-headline {
+    padding: 0;
+  }
+}

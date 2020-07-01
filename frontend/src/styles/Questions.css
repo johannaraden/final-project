@@ -1,0 +1,269 @@
+/* Question page */
+
+.questions-list a {
+  text-decoration: none;
+}
+
+.question-result-list {
+  padding: 1em 2em;
+}
+
+/* Question summary */
+
+.questions-menu {
+  width: 80%;
+}
+
+.question-summary, .questions-menu {
+  background-color:white;
+  margin: 1em auto;
+  padding: 1.5em;
+  border-radius: 4px;
+  -webkit-box-shadow: 3px 3px 3px -3px rgba(194,194,194,1);
+  -moz-box-shadow: 3px 3px 3px -3px rgba(194,194,194,1);
+  box-shadow: 3px 3px 3px -3px rgba(194,194,194,1);
+}
+
+
+.summary-header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 8em;
+  margin: auto 5%;
+}
+
+.question-summary a {
+  text-decoration: none;
+  color: black;
+}
+
+.like-p {
+  text-align: center;
+  font-size: 5em;
+  margin-top: 2em;
+  font-size: 1.3em;
+  color: palevioletred;
+  align-self: flex-end;
+}
+
+.question-summary:hover {
+  -webkit-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+  -moz-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+  box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+}
+
+.summary-body {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5em .5em;
+}
+
+.summary-body button {
+  width: 10em;
+  align-self: flex-end;
+  margin-right: 5%;
+}
+
+.summary-text {
+  margin: auto 5%;
+}
+
+.horisontal-line {
+  margin: 2em 0;
+}
+
+/* Question menu */
+
+.questions-menu {
+  display: flex;
+  justify-content: center;
+  background-color: #858585ed;
+}
+
+.question-sorting {
+  padding: 1em 2em;
+  font-size: 1em;
+  color: #4f4f4f;
+  border: none;
+}
+
+
+
+/* Question details page */
+
+.details-page {
+  width: 80%;
+  margin: 1em auto;
+}
+
+.question-details-page {
+  background-color:white;
+  margin: 1em auto;
+  padding: 2em;
+  border-radius: 4px;
+  -webkit-box-shadow: 3px 3px 3px -3px rgba(194,194,194,1);
+  -moz-box-shadow: 3px 3px 3px -3px rgba(194,194,194,1);
+  box-shadow: 3px 3px 3px -3px rgba(194,194,194,1);
+}
+
+.question-detail-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-likes {
+ margin: 2em 1em 0 0;
+}
+
+.header-likes > * {
+  align-self: center;
+}
+
+.answer-headline {
+  color: white;
+  padding: 1em;
+}
+.question-headline {
+  color: palevioletred;
+  /* padding: 1em; */
+}
+
+.back-arrow {
+  transform: rotate(180deg);
+}
+
+.back {
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid rgb(223, 223, 223);
+  width: 15%;
+  background-color: white;
+  padding: 0 .2em;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.back:hover {
+  background-color: palegoldenrod;
+  color: white;
+  border: 1px solid white;
+}
+
+.back:hover .back-arrow {
+  filter: invert(1);
+}
+
+.answers-div {
+  background-color: palevioletred;
+  border-radius: 6px;
+  padding: 2em 1em;
+  margin-top: 6em;
+}
+
+.add-instruction {
+  margin-top: 5em;
+  color: darkgray;
+  font-style: oblique;
+}
+
+.answer {
+  background-color: white;
+  margin: 1em; 
+  padding: 1em;
+  border-radius: 6px;
+}
+
+.heart {
+  margin-bottom: -1.5em;
+}
+
+.lots, .few, .none {
+  padding: 2em 1em;
+  border-radius: 50%;
+
+}
+
+.lots {
+  background: rgb(247, 104, 104);
+}
+
+.few {
+  background: rgb(235, 158, 158);
+}
+
+.none {
+  background-color: rgb(185, 185, 185);
+}
+
+.lots, .few, .none:hover {
+  cursor: pointer;
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 500px) {
+  .back {
+    width: 30%;
+  }
+  .answer-headline {
+    padding: 0;
+  }
+  .question-details-page {
+    padding: 1em;
+  }
+  .form-div {
+    padding: 5em;
+  }
+  .heart {
+    transform: scale(0.8);
+  }
+  .lots, .few, .none {
+    padding: 1.2em .1em;
+  }
+  .like-p {
+    font-size: .8em;
+  }
+  .answer-likes > * {
+    text-align: center;
+  }
+  .question-summary {
+    width: 100%;
+    margin: 1em 0;
+    padding: 0;
+    font-size: 0.7em;
+  }
+  .summary-header {
+    height: 6em;
+    padding: .4em 0;
+  }
+  .summary-item {
+    font-size: 1em;
+  }
+  .summary-item .like-p {
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .summary-item {
+    font-size: 1.3em;
+    margin: .2em;
+  }
+  .summary-header {
+    height: 6em;
+    padding: .4em 0;
+  }
+  .heart {
+    transform: scale(0.8);
+  }
+  .lots, .few, .none {
+    padding: 1.2em .1em;
+  }
+  .like-p {
+    font-size: .8em;
+  }
+}

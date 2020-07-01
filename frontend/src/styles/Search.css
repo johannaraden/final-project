@@ -1,0 +1,156 @@
+/* Search bar in header */
+
+.top-search {
+  background-color: #72d2c6;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-summary > * {
+  text-decoration: none;
+}
+
+.search-summary {
+  text-decoration: none;
+}
+
+.search-summary-header {
+  text-decoration: none;
+}
+
+/* Activated modal */
+
+.modal {
+  color: white;
+  margin: 3em auto;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-header button {
+  padding: .5em 1em;
+  border: none;
+}
+
+.modal-header button:hover {
+  background-color: palevioletred;
+}
+
+.modal-search {
+  border: 1px solid #4f4f4f;
+  padding: 1em 2em;
+  font-size: 1em;
+  color: #4f4f4f;
+}
+
+.search-button {
+  cursor: pointer;
+  font-size: 1.2em;
+  margin: .5em;
+}
+
+.search-button:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.tab-panel a {
+  text-decoration: none;
+}
+
+.search-button {
+  border: none;
+  color: #5E6472;
+  background-color: transparent;
+}
+
+.search-submit {
+  padding: .5em 1em;
+  background-color: cornflowerblue;
+  border: none;
+  color: #5E6472;
+  cursor: pointer;
+}
+
+.search-submit:hover {
+  background-color: #72d2c6;
+}
+
+.search-summary {
+  background-color: white;
+  margin: 1em;
+  padding: .5em;
+  font-size: 1.2em;
+  width: 80%;
+}
+
+.search-summary:hover {
+  -webkit-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+  -moz-box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+  box-shadow: 4px 4px 4px -3px rgba(184,184,184,1);
+}
+
+.search-summary a {
+  color: #5E6472;
+  text-decoration: none;
+}
+
+.search-summary:hover .search-summary-item {
+  color: #72d2c6;
+}
+
+.search-read-more {
+  background-color: cornflowerblue;
+  cursor: pointer;
+  color: white;
+  border: none;
+  padding: .4em;
+  display: none;
+}
+
+.search.search-read-more:hover {
+  background-color: #72d2c6;
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 500px) {
+  .modal-header {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .top-search {
+    width: 100%;
+  }
+  .search-close {
+    width: 4em;
+    align-self: flex-end;
+  }
+  .modal-header h2 {
+    text-align: center;
+  }
+  .search-summary {
+    border: 1px solid #d3d3d3;
+    font-size: .6em;
+    width: 100%;
+  }
+  .search-read-more {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .search-summary {
+    font-size: .8em;
+    border: 1px solid #d3d3d3;
+    width: 100%;
+    padding: 0 2em;
+  }
+}
+
