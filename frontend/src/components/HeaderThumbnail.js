@@ -11,7 +11,7 @@ export const HeaderThumbnail = () => {
   return (
     <div className='thumbnail'>
       <Link to='/profile'>
-        <img className='header-thumbnail' src='https://www.fillmurray.com/50/50' alt='profile picture'></img>
+        <img className='header-thumbnail' src='https://www.fillmurray.com/50/50' alt='profile-picture'></img>
       </Link>
       <Link to='/profile'>
         <p>Welcome {userName}</p>
